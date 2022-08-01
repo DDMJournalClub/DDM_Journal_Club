@@ -25,3 +25,5 @@
 
 | No.  | title                                                      | DOI          |
 | ---- | ------------------------------------------------------------ | -------------- |
+
+| 1 | Ratcliff, R., Smith, P. L., Brown, S. D.,& McKoon, G. (2016). Diffusion Decision Model: Current Issues and History.Trends in Cognitive Sciences, 20(4), 260–281. | https://doi.org/10.1016/j.tics.2016.01.007 |
