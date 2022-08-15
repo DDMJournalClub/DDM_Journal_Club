@@ -2,9 +2,6 @@
 
 
 
-* 微信群：
-
-* 时间： 待定
 
 * 合作组织：Chinese Open Science Network(COSN)、Chinese Computational Psychiatry Network (CCPN)
 
@@ -15,7 +12,7 @@
 
 | 期号 | 文献 | 报告人 | 日期 | 主持人 |
 | :--: | :--: | :----: | ---- | ------ |
-|      |      |        |      |        |
+|      |      | 胡啸   |2022.8.9|        |
 |      |      |        |      |        |
 |      |      |        |      |        |
 |      |      |        |      |        |
