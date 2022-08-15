@@ -7,6 +7,8 @@
 
 * 相关资料请见：https://shnu-psych.notion.site/DDM-Club-61db45e10cda41008928ad1f874c8ef4
 
+* 会议录屏请见：https://meeting.tencent.com/v2/cloud-record/share?id=48e6fdfa-0313-47db-b239-39bc6aa69ac4&from=3（第1期）
+
 
 ## DDMJC 日程安排
 
