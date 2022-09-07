@@ -15,8 +15,9 @@
 | 期号 | 文献 | 报告人 | 日期 | 主持人 |
 | :--: | :--: | :----: | ---- | ------ |
 |   1   |   Mental speed is high until age 60 as revealed by analysis of over a million participants   | 胡啸   |2022.8.9|   胡传鹏     |
-|    2  |   Flexible and efficient simulation-based inference for models of decision-making   |   郭鸣谦     |  2022.8.24    |        |
-|    3  |  Psychological mechanisms of loss aversion: A drift-diffusion decomposition    |     温秀娟   |    2022.10.28  |        |
+|    2  |   Flexible and efficient simulation-based inference for models of decision-making   |   郭鸣谦     |  2022.8.24    |    潘晚坷    |
+|    2  |   Wise or mad crowds? The cognitive mechanisms underlying information cascades    |   潘晚坷     |  2022.9.6    |    胡传鹏    |
+|    4  |  Psychological mechanisms of loss aversion: A drift-diffusion decomposition    |     温秀娟   |    2022.10.28  |        |
 |      |      |        |      |        |
 |      |      |        |      |        |
 
