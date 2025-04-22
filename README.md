@@ -26,6 +26,12 @@ The event has received strong support from COSN (Chinese Open Science Network) a
 
 | Reporter                      | Title                   | Date            | Host          | Tags                  |
 |---------------------------|----------------------------------|-----------------|---------------|-----------------------|
+| Zhanbin                        | The Long-Term Effects of Social Influence and Its Cognitive Computational Mechanisms           | April 17, 2025  | Wankē Pān     | perceptual decision making, social learning, training               |
+| Weiwen Lu                      | Closing the Loop: A Dynamic Neural Network Model Integrating Decision-Making and Metacognition | April 8, 2025   | Xiao Hu       | metacognition, neural-network                                        |
+| Tianlin Luo                    | An Inherent Limitation: We Cannot Perfectly Switch Perception of Information in Flexible Perceptual Decision-Making | January 23, 2025 | Wankē Pān     | perceptual decision making, task switch                              |
+| Yufei Wu                       | Neural-Network-Based Bayesian Cognitive Modeling Inference Methods: Testing and Enhancing Inference Reliability | January 16, 2025 | Wankē Pān     | amortized bayesian inference, approximate bayesian computation       |
+| Jiaqi Huang                    | Quantum Sequence Sampler: A Dynamic Model for Decoding Probabilistic Inference                  | October 10, 2024 | Wankē Pān     | quantum-cognition                                                    |
+| Xiujuan Wen                    | Using Functional MRI and Hierarchical Drift Diffusion Models to Elucidate the Role of the Medial Temporal Lobe and Frontal Cortex in Approach-Avoidance Conflict Decision-Making | June 12, 2024    | Yikang Liu    | approach-avoidance conflict, fMRI                                    |
 | Pierre Le Denma           | How Prior Beliefs Affect Confidence: A Computational Modeling Perspective | May 20, 2024    | Xiao Hu       | belief, confidence    |
 | Jiaorong Luo              | The Impact of Sleep Deprivation on Interference Control: An Analysis Based on the Diffusion Model | March 29, 2024  | Yikang Liu    | Conflict, sleep deprivation |
 | Haoyu Zhang               | How DDM Helps Understand the Relationship Between Emotion and Decision Making | November 13, 2023 | Xiujuan Wen   | fMRI, review          |
