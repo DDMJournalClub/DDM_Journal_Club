@@ -26,6 +26,7 @@ The event has received strong support from COSN (Chinese Open Science Network) a
 
 | Reporter                      | Title                   | Date            | Host          | Tags                  |
 |---------------------------|----------------------------------|-----------------|---------------|-----------------------|
+| Noah van Dongen                | PsycoModels: Developing and filling a database for models in psychological science           | July 7, 2025  | Yikang Liu     | computational models               |
 | Zhanbin                        | The Long-Term Effects of Social Influence and Its Cognitive Computational Mechanisms           | April 17, 2025  | Wankē Pān     | perceptual decision making, social learning, training               |
 | Weiwen Lu                      | Closing the Loop: A Dynamic Neural Network Model Integrating Decision-Making and Metacognition | April 8, 2025   | Xiao Hu       | metacognition, neural-network                                        |
 | Tianlin Luo                    | An Inherent Limitation: We Cannot Perfectly Switch Perception of Information in Flexible Perceptual Decision-Making | January 23, 2025 | Wankē Pān     | perceptual decision making, task switch                              |
