@@ -12,8 +12,9 @@ permalink: /schedule/
   </p>
 </section>
 
-<!-- 动态日程列表 -->
+<!-- 动态日程列表：即将进行和进行中的项目 -->
 <section class="section">
+  <h2 class="section-title">即将进行 / 进行中</h2>
   <div class="table-wrapper">
     <table>
       <thead>
@@ -27,32 +28,43 @@ permalink: /schedule/
         </tr>
       </thead>
       <tbody>
-        {% for post in site.posts limit: 20 %}
-        <tr>
-          <td>{{ post.date | date: "%Y-%m-%d" }}</td>
-          <td>{{ post.speaker }}</td>
-          <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
-          <td>{{ post.host }}</td>
-          <td>
-            {% for tag in post.tags %}
-            <span class="tag">{{ tag }}</span>
-            {% endfor %}
-          </td>
-          <td>
-            {% if post.recording == true %}
-            <span class="status status-resolved">已完成</span>
-            {% else %}
-            <span class="status status-open">即将进行</span>
-            {% endif %}
-          </td>
-        </tr>
-        {% endfor %}
+        {% assign upcoming_posts = site.posts | where_exp: "post", "post.status != 'done'" %}
+        {% if upcoming_posts.size > 0 %}
+          {% for post in upcoming_posts limit: 20 %}
+          <tr>
+            <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+            <td>{{ post.speaker }}</td>
+            <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
+            <td>{{ post.host }}</td>
+            <td>
+              {% for tag in post.tags %}
+              <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </td>
+            <td>
+              {% if post.status == 'plan' %}
+              <span class="status status-open">计划中</span>
+              {% elsif post.status == 'in-progress' %}
+              <span class="status status-recording">进行中</span>
+              {% else %}
+              <span class="status status-open">即将进行</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="6" style="text-align: center; padding: var(--space-xl); color: var(--color-text-muted);">
+              暂无即将进行的活动
+            </td>
+          </tr>
+        {% endif %}
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- 历史日程（静态示例） -->
+<!-- 历史日程：已完成的报告 -->
 <section class="section">
   <h2 class="section-title" style="margin-top: var(--space-2xl);">历史日程</h2>
   <div class="table-wrapper">
@@ -68,209 +80,23 @@ permalink: /schedule/
         </tr>
       </thead>
       <tbody>
+        {% assign done_posts = site.posts | where_exp: "post", "post.status == 'done'" | reverse %}
+        {% for post in done_posts limit: 50 %}
         <tr>
-          <td>2024-06-12</td>
-          <td>Xiujuan Wen</td>
-          <td>Using Functional MRI and Hierarchical Drift Diffusion Models to Elucidate the Role of the Medial Temporal Lobe and Frontal Cortex in Approach-Avoidance Conflict Decision-Making</td>
-          <td>刘逸康</td>
+          <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+          <td>{{ post.speaker }}</td>
+          <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
+          <td>{{ post.host }}</td>
           <td>
-            <span class="tag">approach-avoidance conflict</span>
-            <span class="tag">fMRI</span>
+            {% for tag in post.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
           </td>
           <td>
             <span class="status status-resolved">已完成</span>
           </td>
         </tr>
-        <tr>
-          <td>2024-05-20</td>
-          <td>Pierre Le Denma</td>
-          <td>How Prior Beliefs Affect Confidence: A Computational Modeling Perspective</td>
-          <td>胡啸</td>
-          <td>
-            <span class="tag">belief</span>
-            <span class="tag">confidence</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2024-03-29</td>
-          <td>Jiaorong Luo</td>
-          <td>The Impact of Sleep Deprivation on Interference Control: An Analysis Based on the Diffusion Model</td>
-          <td>刘逸康</td>
-          <td>
-            <span class="tag">conflict</span>
-            <span class="tag">sleep deprivation</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2023-11-13</td>
-          <td>Haoyu Zhang</td>
-          <td>How DDM Helps Understand the Relationship Between Emotion and Decision Making</td>
-          <td>温秀娟</td>
-          <td>
-            <span class="tag">fMRI</span>
-            <span class="tag">review</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2023-11-02</td>
-          <td>Jianqiao Zhu</td>
-          <td>The Rational Process of Behavioral Decision Making</td>
-          <td>胡啸</td>
-          <td>
-            <span class="tag">bayesian</span>
-            <span class="tag">bayesian-sampling</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2023-09-07</td>
-          <td>Xiao Hu, Mingqian Guo, et al.</td>
-          <td>Cognitive Computing Model Comparison Discussion Session</td>
-          <td>温秀娟</td>
-          <td>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2023-07-14</td>
-          <td>Amin Ghaderi Kangavari</td>
-          <td>Cognitive Neuro-modeling of EEG and Decision Making in Single-trial Conditions</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">EEG</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2023-06-17</td>
-          <td>Chuanpeng Hu</td>
-          <td>How to Deploy HDDM Using Docker</td>
-          <td>潘晚坷</td>
-          <td>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-11-08</td>
-          <td>Qian Li</td>
-          <td>Evidence Accumulation, Not Self-Control, Explains the Activation of the Dorsolateral Prefrontal Cortex in Normative Choice</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">fMRI</span>
-            <span class="tag">social cognition</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-10-30</td>
-          <td>Liangjie Chen</td>
-          <td>The Stories of Drift Diffusion Models</td>
-          <td>温秀娟</td>
-          <td>
-            <span class="tag">cognitive ability</span>
-            <span class="tag">review</span>
-            <span class="tag">tutorial</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-10-18</td>
-          <td>Gabriel Weindel</td>
-          <td>The Decisive Role of Non-decision Time in Decision-making Models</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">algorithm</span>
-            <span class="tag">non-decision time</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-10-08</td>
-          <td>刘逸康</td>
-          <td>How Prior Information Affects Our Decisions: Building DDM Models Based on Neural Signals</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">EEG</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-09-24</td>
-          <td>Jiaorong Luo</td>
-          <td>Learned Response Connection to Irrelevant Stimuli and the Proportion Congruency Effect: A Study Based on the Diffusion Model</td>
-          <td>温秀娟</td>
-          <td>
-            <span class="tag">conflict</span>
-            <span class="tag">DMC</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-09-06</td>
-          <td>潘晚坷</td>
-          <td>Conformity May Be an Optimal Decision: A Social Cognitive Decision-making Mechanism Based on sDDM</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">sDDM</span>
-            <span class="tag">social cognition</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-08-24</td>
-          <td>郭鸣谦</td>
-          <td>MNLE: Next-generation Efficient Decision Modeling Based on Deep Learning</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">approximate bayesian computation</span>
-            <span class="tag">likelihood approximation</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2022-08-09</td>
-          <td>胡啸</td>
-          <td>Mental Speed Is High Until Age 60 as Revealed by Analysis of Over a Million Participants</td>
-          <td>胡传鹏</td>
-          <td>
-            <span class="tag">age</span>
-            <span class="tag">cognitive ability</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

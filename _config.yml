@@ -35,6 +35,7 @@ defaults:
     values:
       layout: post
       comments: true
+      status: done
 
 # GitHub Pages 需要的安全配置
 # 参考: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-jekyll-build-files-using-github-actions
