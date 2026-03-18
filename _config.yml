@@ -44,24 +44,29 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
-  - jekyll-titles-from-headings
-  - jekyll-optional-front-matter
-  - jekyll-readme-index
-  - jekyll-default-layout
-  - jekyll-relative-links
 
 # 排除文件
 exclude:
   - README.md
   - README_CH.md
+  - README_zh.md
   - templates/
   - Private & Shared/
-  - ".gitignore"
+  - .gitignore
   - Gemfile
   - Gemfile.lock
   - vendor/
   - .bundle/
   - .github/
+  - node_modules/
+  - "*.md"  # 排除根目录下的辅助 md 文件
+  - AGENTS.md
+  - files_plan.md
+  - findings.md
+  - MIGRATION_PLAN.md
+  - PLAN_ISSUES.md
+  - progress.md
+  - task_plan.md
 
 # 包含文件
 include:
