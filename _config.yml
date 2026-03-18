@@ -2,8 +2,8 @@
 
 title: "DDMJC - Diffusion Decision Model Journal Club"
 description: "DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。"
-url: "https://ddmjc.github.io"  # 替换为你的自定义域名
-baseurl: ""
+url: "https://ddmjournalclub.github.io"  # GitHub Pages 域名
+baseurl: "/DDM_Journal_Club"  # 仓库名
 
 # 作者信息
 author:
