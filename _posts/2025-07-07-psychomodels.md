@@ -13,10 +13,15 @@ tags:
   - "computational models"
   - "database"
 recording: true
+speaker_image: "/assets/images/speakers/PsycoModels：构建心理学模型的数据库/"
 links:
   paper: "https://doi.org/10.31234/osf.io/ptzdg_v1"
   website: "https://www.psychomodels.org/"
 ---
+
+{% if page.speaker_image %}
+![{{ page.speaker }}]({{ page.speaker_image }})
+{% endif %}
 
 # PsycoModels: Developing and filling a database for models in psychological science
 
