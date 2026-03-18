@@ -14,6 +14,7 @@ tags:
   - "approximate bayesian computation"
   - "神经网络"
 recording: true
+speaker_image: "/assets/images/speakers/2025-01-16_ZH.png"
 links:
   paper: "https://doi.org/10.48550/arXiv.2412.20586"
 ---

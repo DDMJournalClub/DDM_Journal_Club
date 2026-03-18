@@ -15,6 +15,7 @@ tags:
   - "决策"
   - "综述"
 recording: true
+speaker_image: "/assets/images/speakers/2023-11-13_ZH.png"
 links:
   paper: "https://doi.org/10.1016/j.tics.2019.06.008"
 ---

@@ -4,7 +4,7 @@ short_title: "LBA信心模型"
 speaker: "Haomin Chen"
 institution: "University of Melbourne"
 host: "胡传鹏"
-date: "2024-03-18"
+date: "2026-03-18"
 time: "14:00-15:00"
 timezone: "北京时间 [GMT+8]"
 zoom_id: "863 0404 9478"
@@ -14,6 +14,7 @@ tags:
   - "confidence"
   - "response time"
 recording: true
+speaker_image: "/assets/images/speakers/2026-03-18_HC.png"
 links:
   paper: "https://osf.io/preprints/psyarxiv/jsqx5_v1/"
 ---
@@ -33,7 +34,7 @@ A major target for evidence accumulation models of decision-making has been the 
 
 ## 报告时间
 
-北京时间 [GMT+8] 2024年3月18日 (周三) 14:00~15:00
+北京时间 [GMT+8] 2026年3月18日 (周三) 14:00~15:00
 
 **会议信息：** ZOOM 会议号：863 0404 9478
 
@@ -45,7 +46,7 @@ A major target for evidence accumulation models of decision-making has been the 
 
 ## 参考文献
 
-Chen, H., Heathcote, A., & Osth, A. F. (2024). Linear ballistic accumulator models of confidence and response time. *PsyArXiv*. https://osf.io/preprints/psyarxiv/jsqx5_v1/
+Chen, H., Heathcote, A., & Osth, A. F. (2026). Linear ballistic accumulator models of confidence and response time. *PsyArXiv*. https://osf.io/preprints/psyarxiv/jsqx5_v1/
 
 Brown, S. D., & Heathcote, A. (2008). The simplest complete model of choice response time: Linear ballistic accumulation. *Cognitive Psychology*, 57, 153–178.
 

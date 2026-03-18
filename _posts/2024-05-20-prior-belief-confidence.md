@@ -14,6 +14,7 @@ tags:
   - "自信"
   - "计算建模"
 recording: true
+speaker_image: "/assets/images/speakers/2024-05-20_PLD.png"
 links:
   paper: "https://doi.org/10.1177/09567976241231572"
 ---

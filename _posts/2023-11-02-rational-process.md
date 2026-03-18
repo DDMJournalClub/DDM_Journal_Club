@@ -13,6 +13,7 @@ tags:
   - "bayesian"
   - "bayesian-sampling"
 recording: true
+speaker_image: "/assets/images/speakers/2023-11-02_QN.png"
 links:
   paper: "https://dx.doi.org/10.1037/rev0000427"
 ---

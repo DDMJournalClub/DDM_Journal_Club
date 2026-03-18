@@ -14,6 +14,7 @@ tags:
   - "social cognition"
   - "self-control"
 recording: true
+speaker_image: "/assets/images/speakers/2022-11-08_HY.png"
 links:
   paper: "https://doi.org/10.7554/eLife.65661"
 ---

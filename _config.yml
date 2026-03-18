@@ -17,8 +17,8 @@ future: true
 show_drafts: false
 limit_posts: 10
 
-# Permalink 设置
-permalink: /:title/
+# Permalink 设置 - 日期+主题缩写
+permalink: /:year-:month-:day-:title/
 
 # Markdown 配置
 markdown: kramdown

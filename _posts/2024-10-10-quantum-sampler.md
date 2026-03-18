@@ -14,6 +14,7 @@ tags:
   - "probabilistic reasoning"
   - "cognitive modeling"
 recording: false
+speaker_image: "/assets/images/speakers/2024-10-10_JH.png"
 links:
   paper: "https://doi.org/10.1037/rev0000418"
 ---

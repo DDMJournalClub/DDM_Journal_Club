@@ -14,6 +14,7 @@ tags:
   - "social learning"
   - "training"
 recording: true
+speaker_image: "/assets/images/speakers/2025-04-17_Z.png"
 links: {}
 ---
 
