@@ -14,19 +14,53 @@
   
   <!-- RSS feed -->
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  
+  <!-- Language Switcher CSS -->
+  <style>
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 16px;
+      padding: 6px 12px;
+      background: var(--color-bg-alt);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--color-border);
+      transition: all 0.2s ease;
+    }
+    .lang-switch:hover {
+      background: var(--color-border-light);
+    }
+    .lang-switch .active {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    [data-lang="en"] .zh-only { display: none; }
+    [data-lang="zh"] .en-only { display: none; }
+  </style>
 </head>
 <body>
   <!-- 导航栏 -->
   <header class="site-header">
     <div class="container">
-      <a href="{{ '/' | relative_url }}" class="site-logo">
-        <span class="logo-text">DDMJC</span>
-      </a>
-      <nav class="site-nav">
-        {% for item in site.navigation %}
-        <a href="{{ item.url | relative_url }}" class="nav-link{% if page.url == item.url %} active{% endif %}">{{ item.title }}</a>
-        {% endfor %}
-      </nav>
+      <div style="display: flex; align-items: center; flex: 1;">
+        <a href="{{ '/' | relative_url }}" class="site-logo">
+          <span class="logo-text">DDMJC</span>
+        </a>
+        <nav class="site-nav">
+          {% for item in site.navigation %}
+          <a href="{{ item.url | relative_url }}" class="nav-link{% if page.url == item.url %} active{% endif %}">{{ item.title }}</a>
+          {% endfor %}
+        </nav>
+      </div>
+      <!-- Language Switcher -->
+      <div class="lang-switch" onclick="toggleLanguage()">
+        <span class="zh-only"><span class="active">中</span> | <span class="en-only">EN</span></span>
+        <span class="en-only"><span class="active">EN</span> | <span>中</span></span>
+      </div>
     </div>
   </header>
 
@@ -43,17 +77,17 @@
       <div class="footer-content">
         <div class="footer-section">
           <h4>DDMJC</h4>
-          <p>{{ site.description }}</p>
+          <p data-i18n="footer.description">{{ site.description }}</p>
         </div>
         <div class="footer-section">
-          <h4>链接</h4>
+          <h4 data-i18n="footer.links">链接</h4>
           <ul class="footer-links">
-            <li><a href="https://space.bilibili.com/3461571806235136" target="_blank" rel="noopener">Bilibili</a></li>
-            <li><a href="https://github.com/ddmjc" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://space.bilibili.com/3461571806235136" target="_blank" rel="noopener" data-i18n="footer.bilibili">Bilibili</a></li>
+            <li><a href="https://github.com/DDMJournalClub" target="_blank" rel="noopener" data-i18n="footer.github">GitHub</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h4>赞助</h4>
+          <h4 data-i18n="footer.sponsors">赞助</h4>
           <ul class="footer-links">
             {% for sponsor in site.sponsors %}
             <li><a href="{{ sponsor.url }}" target="_blank" rel="noopener">{{ sponsor.name }}</a></li>
@@ -66,5 +100,64 @@
       </div>
     </div>
   </footer>
+
+  <!-- Language Toggle Script -->
+  <script>
+    // Get stored language preference
+    const savedLang = localStorage.getItem('ddmjc-lang') || 'zh';
+    document.body.setAttribute('data-lang', savedLang);
+    
+    function toggleLanguage() {
+      const currentLang = document.body.getAttribute('data-lang');
+      const newLang = currentLang === 'zh' ? 'en' : 'zh';
+      document.body.setAttribute('data-lang', newLang);
+      localStorage.setItem('ddmjc-lang', newLang);
+      
+      // Update all translatable elements
+      updateTranslations(newLang);
+    }
+    
+    function updateTranslations(lang) {
+      const translations = {
+        'zh': {
+          'nav.home': '首页',
+          'nav.schedule': '日程',
+          'nav.papers': '文献',
+          'nav.resources': '资料',
+          'footer.links': '链接',
+          'footer.sponsors': '赞助',
+          'footer.bilibili': 'Bilibili',
+          'footer.github': 'GitHub',
+          'footer.description': 'DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。'
+        },
+        'en': {
+          'nav.home': 'Home',
+          'nav.schedule': 'Schedule',
+          'nav.papers': 'Papers',
+          'nav.resources': 'Resources',
+          'footer.links': 'Links',
+          'footer.sponsors': 'Sponsors',
+          'footer.bilibili': 'Bilibili',
+          'footer.github': 'GitHub',
+          'footer.description': 'DDMJC is an online literature sharing and exchange event initiated by the Drift-Diffusion Model (DDM) interest group.'
+        }
+      };
+      
+      // Update navigation
+      const navLinks = document.querySelectorAll('.site-nav .nav-link');
+      if (navLinks[0]) navLinks[0].textContent = translations[lang]['nav.home'];
+      if (navLinks[1]) navLinks[1].textContent = translations[lang]['nav.schedule'];
+      if (navLinks[2]) navLinks[2].textContent = translations[lang]['nav.papers'];
+      if (navLinks[3]) navLinks[3].textContent = translations[lang]['nav.resources'];
+      
+      // Update footer
+      const footerSections = document.querySelectorAll('.footer-section h4');
+      if (footerSections[1]) footerSections[1].textContent = translations[lang]['footer.links'];
+      if (footerSections[2]) footerSections[2].textContent = translations[lang]['footer.sponsors'];
+    }
+    
+    // Initialize translations on load
+    updateTranslations(savedLang);
+  </script>
 </body>
 </html>
