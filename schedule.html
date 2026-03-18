@@ -11,7 +11,7 @@ title: 日程安排
   </p>
 </section>
 
-<!-- 筛选功能 (可选，后续可添加) -->
+<!-- 动态日程列表 -->
 <section class="section">
   <div class="table-wrapper">
     <table>
@@ -26,83 +26,47 @@ title: 日程安排
         </tr>
       </thead>
       <tbody>
-        <!-- 静态示例数据，后续可改为从 _posts 读取 -->
+        {% for post in site.posts limit: 20 %}
         <tr>
-          <td>2025-07-07</td>
-          <td>Noah van Dongen</td>
-          <td>PsycoModels: Developing and filling a database for models in psychological science</td>
-          <td>刘逸康</td>
+          <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+          <td>{{ post.speaker }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.host }}</td>
           <td>
-            <span class="tag">computational models</span>
+            {% for tag in post.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
           </td>
           <td>
+            {% if post.recording == true %}
+            <span class="status status-resolved">已完成</span>
+            {% else %}
             <span class="status status-open">即将进行</span>
+            {% endif %}
           </td>
         </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 历史日程（静态示例） -->
+<section class="section">
+  <h2 class="section-title" style="margin-top: var(--space-2xl);">历史日程</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
         <tr>
-          <td>2025-04-17</td>
-          <td>Zhanbin</td>
-          <td>The Long-Term Effects of Social Influence and Its Cognitive Computational Mechanisms</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">perceptual decision making</span>
-            <span class="tag">social learning</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
+          <th>日期</th>
+          <th>报告人</th>
+          <th>标题</th>
+          <th>主持人</th>
+          <th>标签</th>
+          <th>状态</th>
         </tr>
-        <tr>
-          <td>2025-04-08</td>
-          <td>卢炜文</td>
-          <td>Closing The Loop: A Dynamic Neural Network Model Integrating Decision making and Metacognition</td>
-          <td>胡啸</td>
-          <td>
-            <span class="tag">metacognition</span>
-            <span class="tag">neural-network</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2025-01-23</td>
-          <td>Tianlin Luo</td>
-          <td>An Inherent Limitation: We Cannot Perfectly Switch Perception of Information in Flexible Perceptual Decision-Making</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">perceptual decision making</span>
-            <span class="tag">task switch</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2025-01-16</td>
-          <td>Yufei Wu</td>
-          <td>Neural-Network-Based Bayesian Cognitive Modeling Inference Methods: Testing and Enhancing Inference Reliability</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">amortized bayesian inference</span>
-            <span class="tag">approximate bayesian computation</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
-        <tr>
-          <td>2024-10-10</td>
-          <td>Jiaqi Huang</td>
-          <td>Quantum Sequence Sampler: A Dynamic Model for Decoding Probabilistic Inference</td>
-          <td>潘晚坷</td>
-          <td>
-            <span class="tag">quantum-cognition</span>
-          </td>
-          <td>
-            <span class="status status-resolved">已完成</span>
-          </td>
-        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>2024-06-12</td>
           <td>Xiujuan Wen</td>
@@ -210,6 +174,97 @@ title: 日程安排
           <td>
             <span class="tag">fMRI</span>
             <span class="tag">social cognition</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-10-30</td>
+          <td>Liangjie Chen</td>
+          <td>The Stories of Drift Diffusion Models</td>
+          <td>温秀娟</td>
+          <td>
+            <span class="tag">cognitive ability</span>
+            <span class="tag">review</span>
+            <span class="tag">tutorial</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-10-18</td>
+          <td>Gabriel Weindel</td>
+          <td>The Decisive Role of Non-decision Time in Decision-making Models</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">algorithm</span>
+            <span class="tag">non-decision time</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-10-08</td>
+          <td>刘逸康</td>
+          <td>How Prior Information Affects Our Decisions: Building DDM Models Based on Neural Signals</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">EEG</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-09-24</td>
+          <td>Jiaorong Luo</td>
+          <td>Learned Response Connection to Irrelevant Stimuli and the Proportion Congruency Effect: A Study Based on the Diffusion Model</td>
+          <td>温秀娟</td>
+          <td>
+            <span class="tag">conflict</span>
+            <span class="tag">DMC</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-09-06</td>
+          <td>潘晚坷</td>
+          <td>Conformity May Be an Optimal Decision: A Social Cognitive Decision-making Mechanism Based on sDDM</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">sDDM</span>
+            <span class="tag">social cognition</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-08-24</td>
+          <td>郭鸣谦</td>
+          <td>MNLE: Next-generation Efficient Decision Modeling Based on Deep Learning</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">approximate bayesian computation</span>
+            <span class="tag">likelihood approximation</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-08-09</td>
+          <td>胡啸</td>
+          <td>Mental Speed Is High Until Age 60 as Revealed by Analysis of Over a Million Participants</td>
+          <td>胡传鹏</td>
+          <td>
+            <span class="tag">age</span>
+            <span class="tag">cognitive ability</span>
           </td>
           <td>
             <span class="status status-resolved">已完成</span>

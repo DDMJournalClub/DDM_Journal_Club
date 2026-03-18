@@ -25,27 +25,38 @@ title: 首页
     <a href="{{ '/schedule/' | relative_url }}" class="section-link">查看全部 →</a>
   </div>
   
+  {% assign latest_post = site.posts.first %}
   <div class="card" style="border-left: 4px solid var(--color-primary);">
     <div class="card-header">
       <div>
-        <h3 class="card-title">PsycoModels: Developing and filling a database for models in psychological science</h3>
+        <h3 class="card-title">{{ latest_post.title }}</h3>
         <p class="card-meta">
+          {% if latest_post.recording == true %}
+          <span class="status status-resolved">已完成</span>
+          {% else %}
           <span class="status status-open">即将进行</span>
-          2025年7月7日 · 20:00-21:00 北京时间
+          {% endif %}
+          {{ latest_post.date | date: "%Y年%m月%d日" }} · {{ latest_post.time }}
         </p>
       </div>
     </div>
     <div class="card-content">
-      <p><strong>报告人：</strong>Noah van Dongen</p>
-      <p><strong>主持人：</strong>刘逸康</p>
-      <p style="margin-top: var(--space-md);">
-        本报告将介绍 PsycoModels 项目，这是一个旨在为心理学科学建立模型数据库的倡议。
-      </p>
+      <p><strong>报告人：</strong>{{ latest_post.speaker }}</p>
+      {% if latest_post.institution %}
+      <p><strong>单位：</strong>{{ latest_post.institution }}</p>
+      {% endif %}
+      <p><strong>主持人：</strong>{{ latest_post.host }}</p>
+      {% if latest_post.content %}
+      <p style="margin-top: var(--space-md);">{{ latest_post.content | truncate: 200 }}</p>
+      {% endif %}
     </div>
+    {% if latest_post.tags %}
     <div class="card-tags">
-      <span class="tag">computational models</span>
-      <span class="tag">database</span>
+      {% for tag in latest_post.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
 </section>
 

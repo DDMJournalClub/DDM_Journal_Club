@@ -23,38 +23,38 @@
 
 **已完成**:
 - ✅ 创建新分支 `feature/static-site`
-- ✅ 创建模板文件夹 `templates/`:
-  - `schedule-entry-template.md` - 日程模板
-  - `paper-entry-template.md` - 文献模板
-  - `discussion-entry-template.md` - 讨论模板
+- ✅ 创建模板文件夹 `templates/`
 - ✅ 创建 Jekyll 配置 `_config.yml`
 - ✅ 创建基础布局 `_layouts/default.html`
 - ✅ 创建 CSS 样式 `assets/css/style.css`
-- ✅ 创建首页 `index.html` (使用 frontend-design 技能)
+- ✅ 创建首页 `index.html`
 - ✅ 创建日程页 `schedule.html`
 - ✅ 创建文献页 `papers.html`
 - ✅ 创建资料页 `resources.html`
-- ✅ 创建 GitHub Actions 工作流 `.github/workflows/jekyll.yml`
+- ✅ 创建 GitHub Actions 工作流
+- ✅ 部署到 GitHub Pages
+- ✅ CSS 样式生效
+- ✅ 修复 baseurl 和链接问题
 
-**文件结构**:
-```
-DDMJC_Journal_Club/
-├── _config.yml           # Jekyll 配置
-├── _layouts/
-│   └── default.html      # 基础布局
-├── _posts/               # 日程文章目录
-├── assets/
-│   └── css/
-│       └── style.css    # 样式文件
-├── templates/           # md 模板
-├── index.html           # 首页
-├── schedule.html        # 日程页
-├── papers.html          # 文献页
-├── resources.html       # 资料页
-├── .github/
-│   └── workflows/
-│       └── jekyll.yml  # 自动部署工作流
-├── task_plan.md         # 项目计划
-├── findings.md          # 研究发现
-└── progress.md          # 进度日志
-```
+---
+
+### 会话 3
+
+**问题修复**:
+- ✅ 修复 baseurl 配置
+- ✅ 修复页面链接（使用 relative_url）
+- ✅ 添加 permalink 配置
+
+**新需求确认**:
+- 重写 README，显示 GitHub star 变化
+- 中英文双语切换
+- 迁移剩余日程文档
+
+---
+
+### 会话 4
+
+**更新计划**:
+- P0: 修复子页面 404
+- P1: 迁移剩余 22 个日程 md
+- P2: README 重写 + 多语言支持
