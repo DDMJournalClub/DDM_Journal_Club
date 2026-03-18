@@ -47,7 +47,7 @@ defaults:
 # 排除文件
 exclude:
   - README.md
-  - README_zh.md
+  - README_CH.md
   - templates/
   - Private & Shared/
   - ".gitignore"
