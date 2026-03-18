@@ -115,3 +115,84 @@ end
 ---
 
 **最后更新**: 2026-03-18
+
+---
+
+## 2026-03-18 下午 - 日程显示问题修复
+
+### 问题描述
+用户反馈日程安排页面显示为空，"即将进行 / 进行中" 和 "历史日程" 都为空。
+
+### 第 1 轮修复
+1. 检查 `schedule.html` Liquid 代码 - 发现 `where_exp` 查询逻辑问题
+2. 检查 `_config.yml` - 发现 `limit_posts: 10` 限制
+3. 修改查询逻辑为复杂的 `where_exp` 条件
+
+**结果**：GitHub Actions 构建失败
+```
+Liquid syntax error (line 23): Expected end_of_string but found id
+```
+
+### 第 2 轮修复
+**发现问题**：Jekyll 3.10.0 的 `where_exp` 不支持复合条件（`or` 语法）
+
+**解决方案**：改为使用原生 for + if 模式
+
+修改的文件：
+- `_config.yml`: `limit_posts: 10` → `100`
+- `schedule.html`: 改用 for + if 模式
+- `index.html`: 改用 for + if 模式
+
+### 第 3 轮修复（当前）
+**发现问题**：`exclude: "*.md"` 递归排除了 `_posts/` 下的所有 posts！
+
+查看 GitHub Actions 日志：
+```
+EntryFilter: excluded /_posts/2022-08-09-mental-speed.md
+EntryFilter: excluded /_posts/2022-08-24-mnle.md
+...
+```
+
+**根本原因**：
+- `"*.md"` 本意排除根目录下的辅助 md 文件
+- 但 Jekyll 的 exclude 模式是递归的，应用到所有子目录
+- 导致所有 24 个 posts 被 EntryFilter 排除
+
+**解决方案**：
+- 将 `"*.md"` 改为具体文件的完整路径（以 `/` 开头）
+- 或删除此项，只保留目录排除
+
+修改的文件：
+- `_config.yml`: 修复 exclude 配置
+
+### 第 4 轮修复 ✅ **成功！**
+**状态**：已验证通过
+
+**修复确认**：
+- GitHub Actions 构建成功 ✅
+- 日程安排页面正常显示 posts ✅
+- "即将进行/进行中" 显示 plan/in-progress 状态 posts ✅
+- "历史日程" 显示 done/nil 状态 posts ✅
+- 首页最新推送正常显示 ✅
+
+**最终修改的文件**：
+| 文件 | 修改内容 | 状态 |
+|------|----------|------|
+| `_config.yml` | `limit_posts: 10` → `100` | ✅ |
+| `_config.yml` | 修复 `exclude: "*.md"` → 具体文件路径 | ✅ |
+| `schedule.html` | 改用 for + if 模式（避免 where_exp 复合条件） | ✅ |
+| `index.html` | 改用 for + if 模式 | ✅ |
+
+### Status 元数据
+| 值 | 含义 | 示例 |
+|----|------|------|
+| `plan` | 计划中 | 2026-03-26-rean.md |
+| `in-progress` | 进行中 | 2026-03-18-lba-confidence.md |
+| `done` | 已完成 | 大部分历史 posts |
+| `nil` (默认) | 等同于 done | 向后兼容 |
+
+### 关键教训
+1. **Jekyll exclude 模式是递归的** - `"*.md"` 会排除所有子目录的 .md 文件
+2. **where_exp 不支持复合条件** - Jekyll 3.10.0 中 `or` 语法会报错
+3. **使用 for + if 模式** - 更灵活，兼容性更好
+4. **检查 EntryFilter 日志** - 快速定位文件排除问题

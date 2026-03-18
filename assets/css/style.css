@@ -506,15 +506,28 @@ tr:hover td {
 }
 
 .qr-code {
-  width: 150px;
-  height: 150px;
-  background: var(--color-bg-alt);
-  border-radius: var(--radius-md);
+  width: 350px;  
+  height: 350px; 
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
   margin-bottom: var(--space-sm);
+  overflow: hidden;    /* 关键：防止内部元素溢出 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;       /* 给二维码四周留一点白边，更好看 */
+}
+
+/* 确保图片填满容器且不溢出 */
+.qr-code img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 保持图片比例 */
+  display: block;
 }
 
 .qr-label {
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-text);
 }
