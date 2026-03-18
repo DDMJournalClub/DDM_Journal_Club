@@ -23,7 +23,7 @@
 2. 格式: `/:year-:month-:day-:slug/` 或 `/:year/:title/`
 3. 或在每个 post 的 front matter 中指定 `permalink`
 
-**推荐格式**: `permalink: /:year-:month-:day-:title/`
+**推荐格式**: `permalink: /:year-:month-:day/`
 
 **修改文件**:
 - `_config.yml`
