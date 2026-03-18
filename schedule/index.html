@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日程安排 | DDMJC - Diffusion Decision Model Journal Club</title>
+  <meta name="description" content="DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/DDM_Journal_Club/assets/css/style.css">
+  
+  <!-- 如需使用 Font Awesome 图标，取消注释 -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+  
+  <!-- RSS feed -->
+  <link rel="alternate" type="application/rss+xml" title="DDMJC - Diffusion Decision Model Journal Club" href="/DDM_Journal_Club/feed.xml">
+  
+  <!-- Language Switcher CSS -->
+  <style>
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 16px;
+      padding: 6px 12px;
+      background: var(--color-bg-alt);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--color-border);
+      transition: all 0.2s ease;
+    }
+    .lang-switch:hover {
+      background: var(--color-border-light);
+    }
+    .lang-switch .active {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    [data-lang="en"] .zh-only { display: none; }
+    [data-lang="zh"] .en-only { display: none; }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <header class="site-header">
+    <div class="container">
+      <div style="display: flex; align-items: center; flex: 1;">
+        <a href="/DDM_Journal_Club/" class="site-logo">
+          <span class="logo-text">DDMJC</span>
+        </a>
+        <nav class="site-nav">
+          
+          <a href="/DDM_Journal_Club/" class="nav-link">首页</a>
+          
+          <a href="/DDM_Journal_Club/schedule/" class="nav-link active">日程</a>
+          
+          <a href="/DDM_Journal_Club/papers/" class="nav-link">文献</a>
+          
+          <a href="/DDM_Journal_Club/resources/" class="nav-link">资料</a>
+          
+        </nav>
+      </div>
+      <!-- Language Switcher -->
+      <div class="lang-switch" onclick="toggleLanguage()">
+        <span class="zh-only"><span class="active">中</span> | <span class="en-only">EN</span></span>
+        <span class="en-only"><span class="active">EN</span> | <span>中</span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="site-main">
+    <div class="container">
+      <!-- 页面标题 -->
+<section class="section">
+  <h1 class="section-title">日程安排</h1>
+  <p style="color: var(--color-text-light); margin-top: var(--space-md);">
+    DDMJC 线上研讨会日程安排。每次报告后将上传录播视频到 Bilibili。
+  </p>
+</section>
+
+<!-- 动态日程列表 -->
+<section class="section">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>报告人</th>
+          <th>标题</th>
+          <th>主持人</th>
+          <th>标签</th>
+          <th>状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>2026-03-18</td>
+          <td>Haomin Chen</td>
+          <td><a href="/DDM_Journal_Club/2026-03-18-lba-confidence/">信心与反应时的线性弹道累积 (LBA) 模型</a></td>
+          <td>胡传鹏</td>
+          <td>
+            
+            <span class="tag">LBA</span>
+            
+            <span class="tag">confidence</span>
+            
+            <span class="tag">response time</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2026-01-01</td>
+          <td>TBD</td>
+          <td><a href="/DDM_Journal_Club/2026-01-01-rean/">R-EAM: 理性证据累积模型</a></td>
+          <td>TBD</td>
+          <td>
+            
+            <span class="tag">R-EAM</span>
+            
+            <span class="tag">rational evidence accumulation</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-open">即将进行</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2025-07-07</td>
+          <td>Dr. Noah van Dongen</td>
+          <td><a href="/DDM_Journal_Club/2025-07-07-psychomodels/">PsycoModels：构建心理学模型的数据库</a></td>
+          <td>刘逸康</td>
+          <td>
+            
+            <span class="tag">computational models</span>
+            
+            <span class="tag">database</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2025-04-17</td>
+          <td>Zhanbin</td>
+          <td><a href="/DDM_Journal_Club/2025-04-17-social-influence/">The Long-Term Effects of Social Influence and Its Cognitive Computational Mechanisms</a></td>
+          <td>潘晚坷</td>
+          <td>
+            
+            <span class="tag">perceptual decision making</span>
+            
+            <span class="tag">social learning</span>
+            
+            <span class="tag">training</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2025-04-08</td>
+          <td>卢炜文</td>
+          <td><a href="/DDM_Journal_Club/2025-04-08-closing-the-loop/">闭环：集成决策和元认知的动态神经网络模型</a></td>
+          <td>胡啸</td>
+          <td>
+            
+            <span class="tag">metacognition</span>
+            
+            <span class="tag">neural-network</span>
+            
+            <span class="tag">decision-making</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2025-01-23</td>
+          <td>罗天林</td>
+          <td><a href="/DDM_Journal_Club/2025-01-23-inherent-limitation/">一种固有局限：在灵活感知决策中，我们无法完美地切换对信息的感知</a></td>
+          <td>潘晚坷</td>
+          <td>
+            
+            <span class="tag">perceptual decision making</span>
+            
+            <span class="tag">task switch</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2025-01-16</td>
+          <td>吴雨霏 (Yufei Wu)</td>
+          <td><a href="/DDM_Journal_Club/2025-01-16-bayesian-nn/">基于神经网络的贝叶斯认知建模推断方法：测试并提升推断的可靠性</a></td>
+          <td>潘晚坷</td>
+          <td>
+            
+            <span class="tag">amortized bayesian inference</span>
+            
+            <span class="tag">approximate bayesian computation</span>
+            
+            <span class="tag">神经网络</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2024-11-19</td>
+          <td>曹艺轩</td>
+          <td><a href="/DDM_Journal_Club/2024-11-19-sleep-dep2/">完全睡眠剥夺后抑制控制任务间受损的共性和差异性：基于漂移扩散模型的证据</a></td>
+          <td>刘逸康</td>
+          <td>
+            
+            <span class="tag">sleep deprivation</span>
+            
+            <span class="tag">inhibitory control</span>
+            
+            <span class="tag">ddm</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2024-10-10</td>
+          <td>Jiaqi Huang (黄家麒)</td>
+          <td><a href="/DDM_Journal_Club/2024-10-10-quantum-sampler/">量子序列采样器：解码概率推理的动态模型</a></td>
+          <td>潘晚坷</td>
+          <td>
+            
+            <span class="tag">quantum-cognition</span>
+            
+            <span class="tag">probabilistic reasoning</span>
+            
+            <span class="tag">cognitive modeling</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-open">即将进行</span>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td>2024-06-12</td>
+          <td>温秀娟</td>
+          <td><a href="/DDM_Journal_Club/2024-06-12-fmri-ddm/">利用功能MRI和分层漂移扩散模型阐明内侧颞叶和额叶对趋避冲突决策的作用</a></td>
+          <td>刘逸康</td>
+          <td>
+            
+            <span class="tag">fMRI</span>
+            
+            <span class="tag">趋避冲突</span>
+            
+            <span class="tag">层级DDM</span>
+            
+          </td>
+          <td>
+            
+            <span class="status status-resolved">已完成</span>
+            
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 历史日程（静态示例） -->
+<section class="section">
+  <h2 class="section-title" style="margin-top: var(--space-2xl);">历史日程</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>报告人</th>
+          <th>标题</th>
+          <th>主持人</th>
+          <th>标签</th>
+          <th>状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2024-06-12</td>
+          <td>Xiujuan Wen</td>
+          <td>Using Functional MRI and Hierarchical Drift Diffusion Models to Elucidate the Role of the Medial Temporal Lobe and Frontal Cortex in Approach-Avoidance Conflict Decision-Making</td>
+          <td>刘逸康</td>
+          <td>
+            <span class="tag">approach-avoidance conflict</span>
+            <span class="tag">fMRI</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2024-05-20</td>
+          <td>Pierre Le Denma</td>
+          <td>How Prior Beliefs Affect Confidence: A Computational Modeling Perspective</td>
+          <td>胡啸</td>
+          <td>
+            <span class="tag">belief</span>
+            <span class="tag">confidence</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2024-03-29</td>
+          <td>Jiaorong Luo</td>
+          <td>The Impact of Sleep Deprivation on Interference Control: An Analysis Based on the Diffusion Model</td>
+          <td>刘逸康</td>
+          <td>
+            <span class="tag">conflict</span>
+            <span class="tag">sleep deprivation</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2023-11-13</td>
+          <td>Haoyu Zhang</td>
+          <td>How DDM Helps Understand the Relationship Between Emotion and Decision Making</td>
+          <td>温秀娟</td>
+          <td>
+            <span class="tag">fMRI</span>
+            <span class="tag">review</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2023-11-02</td>
+          <td>Jianqiao Zhu</td>
+          <td>The Rational Process of Behavioral Decision Making</td>
+          <td>胡啸</td>
+          <td>
+            <span class="tag">bayesian</span>
+            <span class="tag">bayesian-sampling</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2023-09-07</td>
+          <td>Xiao Hu, Mingqian Guo, et al.</td>
+          <td>Cognitive Computing Model Comparison Discussion Session</td>
+          <td>温秀娟</td>
+          <td>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2023-07-14</td>
+          <td>Amin Ghaderi Kangavari</td>
+          <td>Cognitive Neuro-modeling of EEG and Decision Making in Single-trial Conditions</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">EEG</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2023-06-17</td>
+          <td>Chuanpeng Hu</td>
+          <td>How to Deploy HDDM Using Docker</td>
+          <td>潘晚坷</td>
+          <td>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-11-08</td>
+          <td>Qian Li</td>
+          <td>Evidence Accumulation, Not Self-Control, Explains the Activation of the Dorsolateral Prefrontal Cortex in Normative Choice</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">fMRI</span>
+            <span class="tag">social cognition</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-10-30</td>
+          <td>Liangjie Chen</td>
+          <td>The Stories of Drift Diffusion Models</td>
+          <td>温秀娟</td>
+          <td>
+            <span class="tag">cognitive ability</span>
+            <span class="tag">review</span>
+            <span class="tag">tutorial</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-10-18</td>
+          <td>Gabriel Weindel</td>
+          <td>The Decisive Role of Non-decision Time in Decision-making Models</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">algorithm</span>
+            <span class="tag">non-decision time</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-10-08</td>
+          <td>刘逸康</td>
+          <td>How Prior Information Affects Our Decisions: Building DDM Models Based on Neural Signals</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">EEG</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-09-24</td>
+          <td>Jiaorong Luo</td>
+          <td>Learned Response Connection to Irrelevant Stimuli and the Proportion Congruency Effect: A Study Based on the Diffusion Model</td>
+          <td>温秀娟</td>
+          <td>
+            <span class="tag">conflict</span>
+            <span class="tag">DMC</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-09-06</td>
+          <td>潘晚坷</td>
+          <td>Conformity May Be an Optimal Decision: A Social Cognitive Decision-making Mechanism Based on sDDM</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">sDDM</span>
+            <span class="tag">social cognition</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-08-24</td>
+          <td>郭鸣谦</td>
+          <td>MNLE: Next-generation Efficient Decision Modeling Based on Deep Learning</td>
+          <td>潘晚坷</td>
+          <td>
+            <span class="tag">approximate bayesian computation</span>
+            <span class="tag">likelihood approximation</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2022-08-09</td>
+          <td>胡啸</td>
+          <td>Mental Speed Is High Until Age 60 as Revealed by Analysis of Over a Million Participants</td>
+          <td>胡传鹏</td>
+          <td>
+            <span class="tag">age</span>
+            <span class="tag">cognitive ability</span>
+          </td>
+          <td>
+            <span class="status status-resolved">已完成</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 添加新日程提示 -->
+<section class="section" style="background: var(--color-bg-alt); border-radius: var(--radius-lg); padding: var(--space-xl);">
+  <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: var(--space-md);">📢 如何添加新日程</h3>
+  <p style="color: var(--color-text-light); margin-bottom: var(--space-md);">
+    在 <code>_posts/</code> 目录下创建新的 Markdown 文件，使用以下格式命名：
+  </p>
+  <pre style="background: var(--color-bg-dark); color: var(--color-text-inverse); padding: var(--space-md); border-radius: var(--radius-md); overflow-x: auto; font-size: 0.85rem;">YYYY-MM-DD-报告标题简写.md</pre>
+  <p style="color: var(--color-text-light); margin-top: var(--space-md);">
+    参考模板文件：<a href="/DDM_Journal_Club/templates/schedule-entry-template.md" style="color: var(--color-primary);">templates/schedule-entry-template.md</a>
+  </p>
+</section>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>DDMJC</h4>
+          <p data-i18n="footer.description">DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。</p>
+        </div>
+        <div class="footer-section">
+          <h4 data-i18n="footer.links">链接</h4>
+          <ul class="footer-links">
+            <li><a href="https://space.bilibili.com/3461571806235136" target="_blank" rel="noopener" data-i18n="footer.bilibili">Bilibili</a></li>
+            <li><a href="https://github.com/DDMJournalClub" target="_blank" rel="noopener" data-i18n="footer.github">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 data-i18n="footer.sponsors">赞助</h4>
+          <ul class="footer-links">
+            
+            <li><a href="https://cosn.org.cn" target="_blank" rel="noopener">COSN</a></li>
+            
+            <li><a href="https://ccpn.bnu.edu.cn" target="_blank" rel="noopener">CCPN</a></li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DDMJC Group. 基于 <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> 构建。</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Toggle Script -->
+  <script>
+    // Get stored language preference
+    const savedLang = localStorage.getItem('ddmjc-lang') || 'zh';
+    document.body.setAttribute('data-lang', savedLang);
+    
+    function toggleLanguage() {
+      const currentLang = document.body.getAttribute('data-lang');
+      const newLang = currentLang === 'zh' ? 'en' : 'zh';
+      document.body.setAttribute('data-lang', newLang);
+      localStorage.setItem('ddmjc-lang', newLang);
+      
+      // Update all translatable elements
+      updateTranslations(newLang);
+    }
+    
+    function updateTranslations(lang) {
+      const translations = {
+        'zh': {
+          'nav.home': '首页',
+          'nav.schedule': '日程',
+          'nav.papers': '文献',
+          'nav.resources': '资料',
+          'footer.links': '链接',
+          'footer.sponsors': '赞助',
+          'footer.bilibili': 'Bilibili',
+          'footer.github': 'GitHub',
+          'footer.description': 'DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。'
+        },
+        'en': {
+          'nav.home': 'Home',
+          'nav.schedule': 'Schedule',
+          'nav.papers': 'Papers',
+          'nav.resources': 'Resources',
+          'footer.links': 'Links',
+          'footer.sponsors': 'Sponsors',
+          'footer.bilibili': 'Bilibili',
+          'footer.github': 'GitHub',
+          'footer.description': 'DDMJC is an online literature sharing and exchange event initiated by the Drift-Diffusion Model (DDM) interest group.'
+        }
+      };
+      
+      // Update navigation
+      const navLinks = document.querySelectorAll('.site-nav .nav-link');
+      if (navLinks[0]) navLinks[0].textContent = translations[lang]['nav.home'];
+      if (navLinks[1]) navLinks[1].textContent = translations[lang]['nav.schedule'];
+      if (navLinks[2]) navLinks[2].textContent = translations[lang]['nav.papers'];
+      if (navLinks[3]) navLinks[3].textContent = translations[lang]['nav.resources'];
+      
+      // Update footer
+      const footerSections = document.querySelectorAll('.footer-section h4');
+      if (footerSections[1]) footerSections[1].textContent = translations[lang]['footer.links'];
+      if (footerSections[2]) footerSections[2].textContent = translations[lang]['footer.sponsors'];
+    }
+    
+    // Initialize translations on load
+    updateTranslations(savedLang);
+  </script>
+</body>
+</html>

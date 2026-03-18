@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>R-EAM: 理性证据累积模型 | DDMJC - Diffusion Decision Model Journal Club</title>
+  <meta name="description" content="DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/DDM_Journal_Club/assets/css/style.css">
+  
+  <!-- 如需使用 Font Awesome 图标，取消注释 -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+  
+  <!-- RSS feed -->
+  <link rel="alternate" type="application/rss+xml" title="DDMJC - Diffusion Decision Model Journal Club" href="/DDM_Journal_Club/feed.xml">
+  
+  <!-- Language Switcher CSS -->
+  <style>
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 16px;
+      padding: 6px 12px;
+      background: var(--color-bg-alt);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--color-border);
+      transition: all 0.2s ease;
+    }
+    .lang-switch:hover {
+      background: var(--color-border-light);
+    }
+    .lang-switch .active {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    [data-lang="en"] .zh-only { display: none; }
+    [data-lang="zh"] .en-only { display: none; }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <header class="site-header">
+    <div class="container">
+      <div style="display: flex; align-items: center; flex: 1;">
+        <a href="/DDM_Journal_Club/" class="site-logo">
+          <span class="logo-text">DDMJC</span>
+        </a>
+        <nav class="site-nav">
+          
+          <a href="/DDM_Journal_Club/" class="nav-link">首页</a>
+          
+          <a href="/DDM_Journal_Club/schedule/" class="nav-link">日程</a>
+          
+          <a href="/DDM_Journal_Club/papers/" class="nav-link">文献</a>
+          
+          <a href="/DDM_Journal_Club/resources/" class="nav-link">资料</a>
+          
+        </nav>
+      </div>
+      <!-- Language Switcher -->
+      <div class="lang-switch" onclick="toggleLanguage()">
+        <span class="zh-only"><span class="active">中</span> | <span class="en-only">EN</span></span>
+        <span class="en-only"><span class="active">EN</span> | <span>中</span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="site-main">
+    <div class="container">
+      <style>
+  /* Post-specific styles */
+  .post-header {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .post-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-md);
+  }
+  
+  .post-meta {
+    display: flex;
+    gap: var(--space-lg);
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .post-meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+  
+  /* Speaker photo float right */
+  .speaker-photo {
+    float: right;
+    max-width: 250px;
+    margin-left: var(--space-lg);
+    margin-bottom: var(--space-md);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Markdown content styling */
+  .post-content h2 {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .post-content hr {
+    border: 0;
+    border-top: 1px solid var(--color-border-light);
+    margin: var(--space-lg) 0;
+  }
+  
+  .post-content p {
+    margin-bottom: var(--space-md);
+    line-height: 1.7;
+  }
+  
+  .post-tags {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+  }
+</style>
+
+<article class="post clearfix">
+  <!-- Post Header -->
+  <header class="post-header">
+    <h1 class="post-title">R-EAM: 理性证据累积模型</h1>
+    <div class="post-meta">
+      <span class="post-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        2026年01月01日
+      </span>
+      <span class="post-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        20:00-21:00
+      </span>
+      
+      <span class="post-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        ZOOM: TBD
+      </span>
+      
+    </div>
+    
+    <div class="post-tags">
+      
+      <span class="tag">R-EAM</span>
+      
+      <span class="tag">rational evidence accumulation</span>
+      
+    </div>
+    
+  </header>
+
+  <!-- Post Content with Speaker Photo -->
+  <div class="post-content clearfix">
+    
+    
+    <h1 id="r-eam-rational-evidence-accumulation-model">R-EAM: Rational Evidence Accumulation Model</h1>
+
+<hr />
+
+<h2 id="报告简介">报告简介</h2>
+
+<p>R-EAM (Rational Evidence Accumulation Model) 相关报告。</p>
+
+<p>待确定更多详情。</p>
+
+<hr />
+
+<h2 id="报告时间">报告时间</h2>
+
+<p>待确定</p>
+
+<p><strong>主持人：</strong> 待确定</p>
+
+<hr />
+
+<h2 id="其他">其他</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />录屏</li>
+</ul>
+
+  </div>
+</article>
+
+<!-- Back to Schedule -->
+<section class="section" style="margin-top: var(--space-2xl); text-align: center;">
+  <a href="/DDM_Journal_Club/schedule/" class="btn btn-secondary">
+    ← 返回日程安排
+  </a>
+</section>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>DDMJC</h4>
+          <p data-i18n="footer.description">DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。</p>
+        </div>
+        <div class="footer-section">
+          <h4 data-i18n="footer.links">链接</h4>
+          <ul class="footer-links">
+            <li><a href="https://space.bilibili.com/3461571806235136" target="_blank" rel="noopener" data-i18n="footer.bilibili">Bilibili</a></li>
+            <li><a href="https://github.com/DDMJournalClub" target="_blank" rel="noopener" data-i18n="footer.github">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 data-i18n="footer.sponsors">赞助</h4>
+          <ul class="footer-links">
+            
+            <li><a href="https://cosn.org.cn" target="_blank" rel="noopener">COSN</a></li>
+            
+            <li><a href="https://ccpn.bnu.edu.cn" target="_blank" rel="noopener">CCPN</a></li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DDMJC Group. 基于 <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> 构建。</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language Toggle Script -->
+  <script>
+    // Get stored language preference
+    const savedLang = localStorage.getItem('ddmjc-lang') || 'zh';
+    document.body.setAttribute('data-lang', savedLang);
+    
+    function toggleLanguage() {
+      const currentLang = document.body.getAttribute('data-lang');
+      const newLang = currentLang === 'zh' ? 'en' : 'zh';
+      document.body.setAttribute('data-lang', newLang);
+      localStorage.setItem('ddmjc-lang', newLang);
+      
+      // Update all translatable elements
+      updateTranslations(newLang);
+    }
+    
+    function updateTranslations(lang) {
+      const translations = {
+        'zh': {
+          'nav.home': '首页',
+          'nav.schedule': '日程',
+          'nav.papers': '文献',
+          'nav.resources': '资料',
+          'footer.links': '链接',
+          'footer.sponsors': '赞助',
+          'footer.bilibili': 'Bilibili',
+          'footer.github': 'GitHub',
+          'footer.description': 'DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。'
+        },
+        'en': {
+          'nav.home': 'Home',
+          'nav.schedule': 'Schedule',
+          'nav.papers': 'Papers',
+          'nav.resources': 'Resources',
+          'footer.links': 'Links',
+          'footer.sponsors': 'Sponsors',
+          'footer.bilibili': 'Bilibili',
+          'footer.github': 'GitHub',
+          'footer.description': 'DDMJC is an online literature sharing and exchange event initiated by the Drift-Diffusion Model (DDM) interest group.'
+        }
+      };
+      
+      // Update navigation
+      const navLinks = document.querySelectorAll('.site-nav .nav-link');
+      if (navLinks[0]) navLinks[0].textContent = translations[lang]['nav.home'];
+      if (navLinks[1]) navLinks[1].textContent = translations[lang]['nav.schedule'];
+      if (navLinks[2]) navLinks[2].textContent = translations[lang]['nav.papers'];
+      if (navLinks[3]) navLinks[3].textContent = translations[lang]['nav.resources'];
+      
+      // Update footer
+      const footerSections = document.querySelectorAll('.footer-section h4');
+      if (footerSections[1]) footerSections[1].textContent = translations[lang]['footer.links'];
+      if (footerSections[2]) footerSections[2].textContent = translations[lang]['footer.sponsors'];
+    }
+    
+    // Initialize translations on load
+    updateTranslations(savedLang);
+  </script>
+</body>
+</html>
