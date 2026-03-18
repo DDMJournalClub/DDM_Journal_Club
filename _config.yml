@@ -52,7 +52,12 @@ exclude:
   - Private & Shared/
   - .gitignore
   - node_modules/
-  - "*.md"  # 排除根目录下的辅助 md 文件
+  - "/README.md"
+  - "/README_CH.md"
+  - "/README_zh.md"
+  - "/task_plan.md"
+  - "/findings.md"
+  - "/progress.md"
 
 # 包含文件
 include:
