@@ -4,176 +4,283 @@
 
 **项目**: DDMJC 静态网站 (Jekyll + GitHub Pages)  
 **最后更新**: 2026-03-18  
-**当前状态**: 问题修复完成，功能完善中
+**当前状态**: 🔧 修复 GitHub Actions 构建错误
 
 ---
 
-## 🔍 Git 提交历史分析 (最近15次)
+## 🚨 紧急修复状态
 
-### 核心提交 (按时间倒序)
+### 当前问题
+| 问题 | 严重程度 | 状态 | 负责人 |
+|------|----------|------|--------|
+| Liquid Exception: Cannot assemble URI string with ambiguous path | 🔴 P0 | 🔄 修复中 | Sisyphus |
 
-| 提交哈希 | 日期 | 描述 | 影响文件 |
-|----------|------|------|----------|
-| `092de05` | 2026-03-18 | add qrcode | `assets/images/` |
-| `5cff127` | 2026-03-18 | feat: 双语 readme 优化 | `README.md`, `README_CH.md` |
-| `d502d00` | 2026-03-18 | fix post | `_posts/` |
-| `6807280` | 2026-03-18 | feat: 迁移更多图片 | `assets/images/speakers/` |
-| `85e1cff` | 2026-03-18 | feat: 添加 post 独立页面布局 | `_layouts/post.html` |
-| `68d1218` | 2026-03-18 | feat: 添加 speaker_image 字段支持 | `_posts/*.md` |
-| `96d63bc` | 2026-03-18 | feat: 迁移主讲人图片资源 | `assets/images/speakers/` |
-| `ec44df2` | 2026-03-18 | feat: 添加 R-EAM (2026) 占位符 | `_posts/2026-01-01-rean.md` |
-| `3516cf8` | 2026-03-18 | feat: 完成日程迁移 (23/26) | `_posts/*.md` |
-| `021c4bb` | 2026-03-18 | feat: 继续迁移日程 md (新增 5 个) | `_posts/*.md` |
-| `a850d2f` | 2026-03-18 | feat: P2 完成 - README 重写 + 中英文双语支持 | `README.md` |
-| `f07d066` | 2026-03-18 | feat: 添加动态日程读取功能 | `schedule.html` |
-| `fd1faab` | 2026-03-18 | **fix: 添加 permalink 配置解决页面生成问题** | `_config.yml` |
-| `e5fac23` | 2026-03-18 | Merge branch 'feature/static-site' fix base url | - |
-| `59b3585` | 2026-03-18 | fix: 修复 baseurl 配置和页面链接 | `_config.yml` |
+### 修复策略
+**选择方案**: 日期+slug permalink 格式
 
-### 关键修复提交分析
-
-#### `fd1faab` - Permalink 配置修复
-```diff
-+# Permalink 设置
-+permalink: /:title/
-```
-**时间**: 2026-03-18 10:36  
-**问题**: 解决页面生成问题  
-**当前状态**: 已被更新为 `/:year-:month-:day/`
+**理由**:
+1. ✅ 与实际 md 文件名一致
+2. ✅ 避免同日多 post 冲突
+3. ✅ URL 可读性强
+4. ✅ SEO 友好
+5. ✅ 避免中文 slugify 问题
 
 ---
 
-## 📁 文件状态矩阵
+## 🔍 需要修改的文件清单
 
-### 已修改文件 (今日)
+### 🔴 P0 - 立即修复 (阻止构建)
 
-| 文件 | 修改内容 | 状态 | 影响 |
-|------|----------|------|------|
-| `_config.yml` | permalink 从 `/:title/` → `/:year-:month-:day/` | ✅ 已修复 | 所有 post URL 结构 |
-| `PLAN_ISSUES.md` | 更新 permalink 推荐格式 | ✅ 已同步 | 文档一致性 |
-| `files_plan.md` | 新建 - 文件计划管理 | ✅ 新建 | 项目管理 |
+| # | 文件 | 行号 | 当前问题 | 修复内容 | 预期结果 |
+|---|------|------|----------|----------|----------|
+| 1 | `_config.yml` | 21 | `permalink: /:year-:month-:day/` | 改为 `/:year-:month-:day-:slug/` | URL 格式匹配文件名 |
+| 2 | `index.html` | 109 | `'assets/images/...'` | 改为 `'/assets/images/...'` | 消除歧义路径 |
+| 3 | `index.html` | 117 | `'assets/images/...'` | 改为 `'/assets/images/...'` | 消除歧义路径 |
+| 4 | `schedule.html` | 3 | 无 permalink | 添加 `permalink: /schedule/` | 防止中文 slug |
+| 5 | `papers.html` | 3 | 无 permalink | 添加 `permalink: /papers/` | 防止中文 slug |
+| 6 | `resources.html` | 3 | 无 permalink | 添加 `permalink: /resources/` | 防止中文 slug |
+| 7 | `schedule.html` | 284 | `YYYY-MM-DD-报告标题简写.md` | 改为 `YYYY-MM-DD-topic-slug.md` | 文档一致性 |
 
-### 核心文件清单
+### 🟡 P1 - 验证与测试
 
-#### 配置文件
-- ✅ `_config.yml` - Jekyll 配置，已修复 permalink
-- ✅ `.github/workflows/jekyll.yml` - CI/CD 配置
-
-#### 布局文件
-- ✅ `_layouts/default.html` - 主布局
-- ✅ `_layouts/post.html` - Post 详情页布局 (新增)
-
-#### 页面文件
-- ✅ `index.html` - 首页 (动态读取最新 post)
-- ✅ `schedule.html` - 日程页面 (动态读取 _posts/)
-- ✅ `papers.html` - 文献页面
-- ✅ `resources.html` - 资料页面
-
-#### 内容文件
-- ✅ `_posts/*.md` - 26 个日程 post (已全部迁移)
-- ✅ `assets/images/speakers/` - 主讲人图片 (20/20 已迁移)
-
-#### 规划文件
-- ✅ `task_plan.md` - 项目阶段跟踪
-- ✅ `progress.md` - 进度日志
-- ✅ `findings.md` - 研究发现
-- ✅ `files_plan.md` - 文件计划 (新建)
+| # | 任务 | 工具/方法 | 成功标准 |
+|---|------|-----------|----------|
+| 8 | 本地 Jekyll 构建 | `jekyll build` | 无错误输出 |
+| 9 | 检查 `_site` 结构 | `ls -R _site/` | URL 格式正确 |
+| 10 | GitHub Actions 构建 | Push to main | 构建状态 Success |
+| 11 | 在线验证 | 浏览器访问 | 所有页面可访问 |
 
 ---
 
-## 🔧 今日修改详情
+## 📁 修改详情
 
-### 1. Permalink 格式修复
+### 1. `_config.yml` - Permalink 格式更新
 
 **修改前:**
 ```yaml
-permalink: /:title/
+# 第21行
+permalink: /:year-:month-:day/
 ```
 
 **修改后:**
 ```yaml
-permalink: /:year-:month-:day/
+# 第21行
+permalink: /:year-:month-:day-:slug/
 ```
 
-**原因:**
-- 避免 Jekyll 处理包含 HTML 标签的 title 时产生 Liquid Exception
-- 简化 URL 结构，提高可读性
-- 解决 `'<section class="section"> ...'` 错误
+**URL 对比**:
+| Post 文件名 | 修改前 URL | 修改后 URL |
+|-------------|------------|------------|
+| `2026-03-18-lba-confidence.md` | `/2026/03/18/` | `/2026-03-18-lba-confidence/` |
+| `2022-08-09-mental-speed.md` | `/2022/08/09/` | `/2022-08-09-mental-speed/` |
 
-**影响:**
-- URL 从 `/2026-03-18-lba-confidence/` 变为 `/2026/03/18/`
-- 同一日期多个 post 会自动添加数字后缀
-
-### 2. 文档同步更新
-
-**修改文件:** `PLAN_ISSUES.md`
-- 更新 permalink 推荐格式示例
-- 保持文档与实际配置一致
+**注意事项**:
+- 确保 `slug` 从文件名中提取（最后一个 `-` 后的部分）
+- 所有现有 post 的 URL 会改变，需更新外部链接
 
 ---
 
-## 📊 项目进度总览
+### 2. `index.html` - 图片路径修复
 
-### ✅ 已完成 (100%)
+**修改前 (第109行):**
+```html
+<img src="{{ 'assets/images/qrcode_ddmjournalclub.github.io.png' | relative_url }}" ...>
+```
 
-| 阶段 | 内容 | 状态 |
-|------|------|------|
-| 1 | 仓库重构 | ✅ 完成 |
-| 2 | md 模板标准化 | ✅ 完成 |
-| 3 | Jekyll 搭建 + 部署 | ✅ 完成 |
-| 4 | 前端设计 | ✅ 完成 (CSS 生效) |
-| 5 | 文档迁移 | ✅ 完成 (26/26) |
-| 6 | 问题修复 | ✅ 完成 (permalink 修复) |
+**修改后 (第109行):**
+```html
+<img src="{{ '/assets/images/qrcode_ddmjournalclub.github.io.png' | relative_url }}" ...>
+```
 
-### 🔄 进行中
+**修改前 (第117行):**
+```html
+<img src="{{ 'assets/images/qrcode_bilibili.png' | relative_url }}" ...>
+```
 
-| 任务 | 进度 | 下一步 |
-|------|------|--------|
-| 前端优化 | 70% | 优化 UI 设计 |
-| 功能完善 | 80% | 添加更多交互功能 |
+**修改后 (第117行):**
+```html
+<img src="{{ '/assets/images/qrcode_bilibili.png' | relative_url }}" ...>
+```
 
----
-
-## 🎯 下一步行动
-
-### 立即行动 (P0)
-1. ✅ **已完成**: 修复 permalink 配置
-2. ⏳ **待验证**: 运行 `jekyll build` 检查构建是否成功
-3. ⏳ **待验证**: 检查生成的 `_site` 目录 URL 结构
-
-### 短期计划 (P1)
-1. 优化前端 UI 设计
-2. 添加更多交互功能
-3. 更新文档中的 URL 引用
-
-### 长期计划 (P2)
-1. 考虑 URL 重定向以保持向后兼容
-2. 添加更多自动化功能
-3. 性能优化
+**问题根源**:
+- 缺少前导 `/` 导致 `relative_url` 过滤器无法正确组装 URI
+- 与 `baseurl: "/DDM_Journal_Club"` 结合产生歧义路径
 
 ---
 
-## 🔗 相关资源
+### 3. HTML 页面 - 添加 Permalink
 
-- **GitHub 仓库**: https://github.com/DDMJournalClub/DDM_Journal_Club
-- **在线网站**: https://ddmjournalclub.github.io/DDM_Journal_Club/
-- **问题追踪**: `PLAN_ISSUES.md`
-- **进度日志**: `progress.md`
-- **项目计划**: `task_plan.md`
+**schedule.html - Front Matter (第1-4行):**
+```yaml
+---
+layout: default
+title: 日程安排
+permalink: /schedule/
+---
+```
+
+**papers.html - Front Matter (第1-4行):**
+```yaml
+---
+layout: default
+title: 文献资料
+permalink: /papers/
+---
+```
+
+**resources.html - Front Matter (第1-4行):**
+```yaml
+---
+layout: default
+title: 资料
+permalink: /resources/
+---
+```
+
+**index.html**:
+- 可选择添加 `permalink: /` 或保持默认（Jekyll 自动识别首页）
+
+**注意事项**:
+- 必须以 `/` 开头
+- 必须以 `/` 结尾（可选但推荐）
+- 使用 ASCII 字符，避免中文
+
+---
+
+### 4. `schedule.html` - 示例文本更新
+
+**修改前 (第284行):**
+```html
+<pre>YYYY-MM-DD-报告标题简写.md</pre>
+```
+
+**修改后 (第284行):**
+```html
+<pre>YYYY-MM-DD-topic-slug.md</pre>
+<p style="color: var(--color-text-light); margin-top: var(--space-xs); font-size: 0.75rem;">
+  示例: 2026-03-18-lba-confidence.md
+</p>
+```
+
+**命名规范**:
+- `YYYY-MM-DD`: 日期（必须与 front matter 中的 date 一致）
+- `topic-slug`: 英文主题简写（如 `lba-confidence`, `mental-speed`）
+- 使用连字符 `-` 分隔
+
+---
+
+## 🔧 修复执行计划
+
+### Phase 1: 配置与路径修复
+```
+1. _config.yml (permalink)
+   └── 保存后立即验证 YAML 语法
+
+2. index.html (图片路径)
+   └── 保存后检查其他图片路径
+
+3. HTML 页面 (permalink)
+   └── 批量修改，统一验证
+```
+
+### Phase 2: 文档与示例更新
+```
+4. schedule.html (示例文本)
+   └── 更新注释说明
+
+5. 检查其他 HTML 文件的示例文本
+   └── papers.html, resources.html 等
+```
+
+### Phase 3: 验证测试
+```
+6. 本地构建测试
+   └── jekyll build --destination _site
+
+7. GitHub Actions 构建
+   └── Push to main 分支
+
+8. 在线验证
+   └── 检查所有页面、链接、图片
+```
+
+---
+
+## 📊 文件依赖关系
+
+```
+_config.yml (permalink)
+    │
+    ├──► 影响所有 _posts/*.md 的 URL 生成
+    │
+    └──► 影响所有页面中的 post.url 引用
+         │
+         ├──► index.html (最新 post 链接)
+         ├──► schedule.html (日程列表链接)
+         └──► _layouts/post.html (返回链接)
+
+index.html (图片路径)
+    │
+    └──► 影响首页二维码显示
+
+HTML 页面 (permalink)
+    │
+    ├──► 影响导航栏链接 (default.html)
+    └──► 影响 _config.yml 中的 navigation
+```
+
+---
+
+## 🎯 成功标准
+
+### 构建成功
+- [ ] `jekyll build` 无错误输出
+- [ ] GitHub Actions 状态 Success
+- [ ] `gh-pages` 分支成功更新
+
+### URL 格式正确
+- [ ] Post URL: `/2026-03-18-lba-confidence/`
+- [ ] 日程页面: `/schedule/`
+- [ ] 文献页面: `/papers/`
+- [ ] 资料页面: `/resources/`
+
+### 功能正常
+- [ ] 首页动态读取最新 post
+- [ ] 日程表格完整显示
+- [ ] 所有导航链接有效
+- [ ] 所有图片加载成功
+- [ ] 二维码显示正常
 
 ---
 
 ## 📝 更新日志
 
 ### 2026-03-18
+- 🔴 创建紧急修复计划
+- ✅ 确定 permalink 策略: 日期+slug
+- ✅ 完成文件修改清单
+- ✅ 制定详细修复步骤
+- ⏳ 待执行修复
+
+### 2026-03-18 (之前)
 - ✅ 创建 `files_plan.md` 文件计划
-- ✅ 修复 `_config.yml` permalink 配置
+- ✅ 修复 `_config.yml` permalink 配置 (第一次)
 - ✅ 更新 `PLAN_ISSUES.md` 文档
-- ✅ 分析 git 提交历史 (最近15次)
+- ✅ 分析 git 提交历史
 - ✅ 创建文件状态矩阵
 
 ---
 
-**文件计划版本**: v1.0  
+## 🔗 相关资源
+
+- **GitHub Actions**: `.github/workflows/jekyll.yml`
+- **Jekyll Permalinks**: https://jekyllrb.com/docs/permalinks/
+- **Jekyll relative_url**: https://jekyllrb.com/docs/liquid/filters/
+- **GitHub Pages 文档**: https://docs.github.com/en/pages
+
+---
+
+**文件计划版本**: v2.0  
 **最后更新**: 2026-03-18  
+**状态**: 准备执行修复  
 **维护者**: Sisyphus AI Agent

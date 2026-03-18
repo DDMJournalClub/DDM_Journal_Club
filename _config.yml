@@ -17,8 +17,8 @@ future: true
 show_drafts: false
 limit_posts: 10
 
-# Permalink 设置 - 仅使用日期
-permalink: /:year-:month-:day/
+# Permalink 设置 - 日期 + slug (与文件名一致)
+permalink: /:year-:month-:day-:slug/
 
 # Markdown 配置
 markdown: kramdown
