@@ -30,7 +30,7 @@ title: 日程安排
         <tr>
           <td>{{ post.date | date: "%Y-%m-%d" }}</td>
           <td>{{ post.speaker }}</td>
-          <td>{{ post.title }}</td>
+          <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
           <td>{{ post.host }}</td>
           <td>
             {% for tag in post.tags %}
