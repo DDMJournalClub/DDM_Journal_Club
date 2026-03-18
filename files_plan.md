@@ -260,7 +260,9 @@ HTML 页面 (permalink)
 - ✅ 确定 permalink 策略: 日期+slug
 - ✅ 完成文件修改清单
 - ✅ 制定详细修复步骤
-- ⏳ 待执行修复
+- ✅ 执行修复 (8个文件修改)
+- ✅ Git 提交并推送
+- ⏳ GitHub Actions 构建中 (需手动验证)
 
 ### 2026-03-18 (之前)
 - ✅ 创建 `files_plan.md` 文件计划
@@ -282,5 +284,5 @@ HTML 页面 (permalink)
 
 **文件计划版本**: v2.0  
 **最后更新**: 2026-03-18  
-**状态**: 准备执行修复  
+**状态**: 已执行修复，等待 GitHub Actions 构建结果  
 **维护者**: Sisyphus AI Agent
