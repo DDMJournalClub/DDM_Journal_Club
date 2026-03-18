@@ -15,7 +15,7 @@ author:
 timezone: Asia/Shanghai
 future: true
 show_drafts: false
-limit_posts: 10
+limit_posts: 100
 
 # Permalink 设置 - 日期 + slug (与文件名一致)
 permalink: /:year-:month-:day-:slug/

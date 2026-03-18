@@ -28,7 +28,7 @@ permalink: /schedule/
         </tr>
       </thead>
       <tbody>
-        {% assign upcoming_posts = site.posts | where_exp: "post", "post.status != 'done'" %}
+        {% assign upcoming_posts = site.posts | where_exp: "post", "post.status == 'plan' or post.status == 'in-progress' or post.status == nil or post.date > site.time" %}
         {% if upcoming_posts.size > 0 %}
           {% for post in upcoming_posts limit: 20 %}
           <tr>
@@ -80,7 +80,7 @@ permalink: /schedule/
         </tr>
       </thead>
       <tbody>
-        {% assign done_posts = site.posts | where_exp: "post", "post.status == 'done'" | reverse %}
+        {% assign done_posts = site.posts | where_exp: "post", "post.status == 'done' or post.status == nil" | reverse %}
         {% for post in done_posts limit: 50 %}
         <tr>
           <td>{{ post.date | date: "%Y-%m-%d" }}</td>
