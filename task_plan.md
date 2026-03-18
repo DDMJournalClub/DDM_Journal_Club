@@ -170,8 +170,9 @@
 - ✅ 确定 permalink 策略: 日期+slug
 - ✅ 完成问题根源分析
 - ✅ 执行修复步骤 (8个文件)
-- ✅ Git 提交并推送
-- ⏳ GitHub Actions 构建中
+- ✅ Git 提交 (本地)
+- ✅ 更新 AGENTS.md 强调不要自动 push
+- ⏳ 等待用户手动 push 触发 GitHub Actions
 
 ---
 
