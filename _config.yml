@@ -59,6 +59,9 @@ exclude:
   - ".gitignore"
   - Gemfile
   - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - .github/
 
 # 包含文件
 include:
