@@ -261,10 +261,11 @@ HTML 页面 (permalink)
 - ✅ 完成文件修改清单
 - ✅ 制定详细修复步骤
 - ✅ 执行修复 (8个文件修改)
-- ✅ Git 提交并推送 (commit: 23d2ce6)
+- ✅ Git 提交 (commit: 23d2ce6)
 - ✅ 更新文档状态 (commit: 2be6af8)
 - ✅ 更新文件计划提交记录 (commit: f3755f9)
-- ⏳ GitHub Actions 构建中 (需手动验证)
+- ✅ 更新 AGENTS.md 强调不要自动 push (commit: 99b788a)
+- ⏳ 等待用户手动 push 触发 GitHub Actions
 
 ### 2026-03-18 (之前)
 - ✅ 创建 `files_plan.md` 文件计划
@@ -286,5 +287,5 @@ HTML 页面 (permalink)
 
 **文件计划版本**: v2.0  
 **最后更新**: 2026-03-18  
-**状态**: 已执行修复，等待 GitHub Actions 构建结果  
+**状态**: 已执行修复并提交，等待用户手动 push 触发 GitHub Actions  
 **维护者**: Sisyphus AI Agent

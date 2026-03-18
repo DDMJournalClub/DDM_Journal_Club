@@ -175,6 +175,7 @@ If you use Python, you need use the env from conda, which is py312 as the main p
 - **Do not** add large binary files — use external links for PDFs
 - **Do not** hardcode URLs — use `{{ site.url }}{{ site.baseurl }}`
 - **Do not** use emoji in file names or headings in HTML (emoji OK in Markdown posts)
+- **Do not** push to remote repository — only commit locally, user will push manually to trigger GitHub Actions
 
 ---
 
