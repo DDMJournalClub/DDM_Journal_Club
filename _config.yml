@@ -17,6 +17,9 @@ future: true
 show_drafts: false
 limit_posts: 10
 
+# Permalink 设置
+permalink: /:title/
+
 # Markdown 配置
 markdown: kramdown
 kramdown:
