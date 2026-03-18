@@ -47,26 +47,11 @@ plugins:
 
 # 排除文件
 exclude:
-  - README.md
-  - README_CH.md
-  - README_zh.md
   - templates/
   - Private & Shared/
   - .gitignore
-  - Gemfile
-  - Gemfile.lock
-  - vendor/
-  - .bundle/
-  - .github/
   - node_modules/
   - "*.md"  # 排除根目录下的辅助 md 文件
-  - AGENTS.md
-  - files_plan.md
-  - findings.md
-  - MIGRATION_PLAN.md
-  - PLAN_ISSUES.md
-  - progress.md
-  - task_plan.md
 
 # 包含文件
 include:
@@ -122,16 +107,6 @@ team:
 # 赞助/合作
 sponsors:
   - name: "COSN"
-    url: "https://cosn.org.cn"
-    description: "Chinese Open Science Network"
+    description: "微信公众号：Chinese Open Science Network"
   - name: "CCPN"
-    url: "https://ccpn.bnu.edu.cn"
-    description: "Chinese Computational Psychiatry Network"
-
-# 构建配置
-# 注意: GitHub Pages 不支持自定义 Action 构建时使用此配置
-# 本地测试时可使用
-# keep_files: [".git", ".htaccess"]
-# host: 127.0.0.1
-# port: 4000
-# incremental: true
+    description: "微信公众号：Chinese Computational Psychiatry Network"
