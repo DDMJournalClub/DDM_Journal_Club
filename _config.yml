@@ -1,0 +1,120 @@
+# DDMJC Jekyll 站点配置
+
+title: "DDMJC - Diffusion Decision Model Journal Club"
+description: "DDMJC 是一个线上文献分享与交流活动，由 Drift-Diffusion Model (DDM) 兴趣小组发起。"
+url: "https://ddmjc.github.io"  # 替换为你的自定义域名
+baseurl: ""
+
+# 作者信息
+author:
+  name: "DDMJC Group"
+  email: "ddmjc@example.com"
+  github: "https://github.com/ddmjc"
+
+# Jekyll 配置
+timezone: Asia/Shanghai
+future: true
+show_drafts: false
+limit_posts: 10
+
+# Markdown 配置
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# 默认配置
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+
+# GitHub Pages 需要的安全配置
+# 参考: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-jekyll-build-files-using-github-actions
+# 暂时注释，等部署时再确认
+# plugins:
+#   - jekyll-feed
+#   - jekyll-seo-tag
+#   - jekyll-sitemap
+
+# 排除文件
+exclude:
+  - README.md
+  - README_zh.md
+  - templates/
+  - Private & Shared/
+  - ".gitignore"
+  - Gemfile
+  - Gemfile.lock
+
+# 包含文件
+include:
+  - _pages
+  - assets
+
+# 导航栏
+navigation:
+  - title: 首页
+    url: /
+  - title: 日程
+    url: /schedule/
+  - title: 文献
+    url: /papers/
+  - title: 资料
+    url: /resources/
+
+# 社交链接
+social:
+  bilibili: "https://space.bilibili.com/3461571806235136"
+  github: "https://github.com/ddmjc"
+
+# 组委会成员
+team:
+  - name: "潘晚坷"
+    institution: "南京师范大学 (博士研究生)"
+    role: "组织者"
+  - name: "温秀娟"
+    institution: "华南师范大学 (博士研究生)"
+    role: "组织者"
+  - name: "曾笑雨"
+    institution: "北京师范大学 (博士研究生)"
+    role: "组织者"
+  - name: "郭鸣谦"
+    institution: "拉德堡德大学 (博士研究生)"
+    role: "组织者"
+  - name: "刘逸康"
+    institution: "南京师范大学 (硕士研究生)"
+    role: "组织者"
+  - name: "耿海洋"
+    institution: "天桥脑科学研究院 (博士)"
+    role: "指导老师"
+  - name: "胡啸"
+    institution: "北京师范大学 (博士)"
+    role: "指导老师"
+  - name: "胡传鹏"
+    institution: "南京师范大学 (博士)"
+    role: "指导老师"
+  - name: "聂其阳"
+    institution: "澳门大学 (博士)"
+    role: "指导老师"
+
+# 赞助/合作
+sponsors:
+  - name: "COSN"
+    url: "https://cosn.org.cn"
+    description: "Chinese Open Science Network"
+  - name: "CCPN"
+    url: "https://ccpn.bnu.edu.cn"
+    description: "Chinese Computational Psychiatry Network"
+
+# 构建配置
+# 注意: GitHub Pages 不支持自定义 Action 构建时使用此配置
+# 本地测试时可使用
+# keep_files: [".git", ".htaccess"]
+# host: 127.0.0.1
+# port: 4000
+# incremental: true

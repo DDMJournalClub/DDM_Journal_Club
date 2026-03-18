@@ -1,0 +1,166 @@
+---
+layout: default
+title: 首页
+---
+
+<!-- Hero 区域 -->
+<section class="hero">
+  <h1 class="hero-title">DDMJC</h1>
+  <p class="hero-subtitle">Diffusion Decision Model Journal Club<br>扩散决策模型文献研讨小组</p>
+  <p class="hero-subtitle" style="font-size: 1rem; margin-top: var(--space-md);">
+    一个专注于扩散决策模型 (DDM) 及相关计算模型的线上学术交流平台
+  </p>
+  <a href="/schedule/" class="hero-cta">
+    <span>查看日程安排</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </a>
+</section>
+
+<!-- 最新推送 -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">最新推送</h2>
+    <a href="/schedule/" class="section-link">查看全部 →</a>
+  </div>
+  
+  <div class="card" style="border-left: 4px solid var(--color-primary);">
+    <div class="card-header">
+      <div>
+        <h3 class="card-title">PsycoModels: Developing and filling a database for models in psychological science</h3>
+        <p class="card-meta">
+          <span class="status status-open">即将进行</span>
+          2025年7月7日 · 20:00-21:00 北京时间
+        </p>
+      </div>
+    </div>
+    <div class="card-content">
+      <p><strong>报告人：</strong>Noah van Dongen</p>
+      <p><strong>主持人：</strong>刘逸康</p>
+      <p style="margin-top: var(--space-md);">
+        本报告将介绍 PsycoModels 项目，这是一个旨在为心理学科学建立模型数据库的倡议。
+      </p>
+    </div>
+    <div class="card-tags">
+      <span class="tag">computational models</span>
+      <span class="tag">database</span>
+    </div>
+  </div>
+</section>
+
+<!-- 最近资料更新 -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">最近资料更新</h2>
+    <a href="/resources/" class="section-link">查看全部 →</a>
+  </div>
+  
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-header">
+        <span class="status status-resolved">文献</span>
+      </div>
+      <h3 class="card-title">HDDM: Hierarchical Bayesian estimation</h3>
+      <p class="card-meta">Wiecki, T. V., Sofer, I., & Frank, M. J. (2013)</p>
+      <p class="card-content">HDDM 允许对个体差异进行建模，是 DDM 分析的重要工具。</p>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <span class="status status-recording">教程</span>
+      </div>
+      <h3 class="card-title">Docker 安装 HDDM 教程</h3>
+      <p class="card-meta">胡传鹏 等 · 2023</p>
+      <p class="card-content">使用 Docker 容器快速部署 HDDM 环境，解决依赖问题。</p>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <span class="status status-open">讨论</span>
+      </div>
+      <h3 class="card-title">Trial 数量对 DDM 的影响</h3>
+      <p class="card-meta">热门讨论</p>
+      <p class="card-content">关于实验试次数量如何影响模型参数估计的讨论。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 二维码区域 -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">关注我们</h2>
+  </div>
+  
+  <div class="qr-section">
+    <div class="qr-item">
+      <div class="qr-code" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-bg-alt), var(--color-border-light));">
+        <span style="color: var(--color-text-muted); font-size: 0.85rem;">DDMJC 主页</span>
+      </div>
+      <p class="qr-label">DDMJC 主页</p>
+      <p style="font-size: 0.8rem; color: var(--color-text-muted);">ddmjc.notion.site</p>
+    </div>
+    
+    <div class="qr-item">
+      <div class="qr-code" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fb7299, #ff9eb5);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+          <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/>
+        </svg>
+      </div>
+      <p class="qr-label">Bilibili</p>
+      <p style="font-size: 0.8rem; color: var(--color-text-muted);">会议录播</p>
+    </div>
+  </div>
+</section>
+
+<!-- 组委会成员 -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">组委会成员</h2>
+  </div>
+  
+  <div class="team-grid">
+    {% for member in site.team %}
+    <div class="team-card">
+      <div class="team-avatar">{{ member.name | slice: 0, 1 }}</div>
+      <div class="team-info">
+        <h4>{{ member.name }}</h4>
+        <p>{{ member.institution }}</p>
+        <span class="team-role">{{ member.role }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 合作机构 -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">合作机构</h2>
+  </div>
+  
+  <div class="grid grid-2" style="max-width: 600px;">
+    {% for sponsor in site.sponsors %}
+    <a href="{{ sponsor.url }}" target="_blank" rel="noopener" class="card" style="text-align: center; padding: var(--space-xl);">
+      <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-sm);">{{ sponsor.name }}</h3>
+      <p style="color: var(--color-text-light); font-size: 0.9rem;">{{ sponsor.description }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 关于 DDMJC -->
+<section class="section" style="background: var(--color-bg-alt); border-radius: var(--radius-lg); padding: var(--space-2xl);">
+  <h2 class="section-title" style="text-align: center; margin-bottom: var(--space-xl);">关于 DDMJC</h2>
+  <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--color-text-light); line-height: 1.8;">
+    <p>
+      DDMJC 是由 Drift-Diffusion Model (DDM) 兴趣小组发起的线上文献分享与交流活动。
+    </p>
+    <p style="margin-top: var(--space-md);">
+      我们致力于通过线上方式与国内外学生和同行交流学习 DDM 及相关模型。活动主要关注扩散决策模型的基础知识、相关研究、在决策任务中的应用、代码实现以及数学原理等。
+    </p>
+    <p style="margin-top: var(--space-md);">
+      同时也欢迎认知建模和心理学方法相关的讨论。
+    </p>
+  </div>
+</section>
