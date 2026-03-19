@@ -29,6 +29,6 @@ DDM journal club，简称DDMJC。网址主页：[**DDM Club**](../../DDM%20Club%
 
 右侧**二维码**
 
-![](../DDMoJC%20%E6%97%A5%E7%A8%8B%E5%AE%89%E6%8E%92/Mental%20speed%20is%20high%20until%20age%2060%20as%20revealed%20by%20a/Untitled%201.png)
+![]({{ '/assets/images/discussions/discussion-2/ddm-club-qrcode.png' | relative_url }})
 
 建立该主页提供了一个更加友好的交流平台，功能包括，汇报安排、以及与汇报人直接交流、问题讨论与答疑、以及问题整理的blog、文献分享、以及整理的code等资料。如果大家有感兴趣的文献想要汇报交流可以联系组织者，邮箱：panwanke@163.com 。 欢迎大家一起学习和成长！

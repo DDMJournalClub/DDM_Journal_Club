@@ -17,7 +17,7 @@ Owner: Pan Wanke
 
 - 如何理解DIC
 
-![Untitled](DIC%20%E6%A8%A1%E5%9E%8B%E6%AF%94%E8%BE%83%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/Untitled.png)
+![Untitled]({{ '/assets/images/discussions/discussion-5/dic-comparison-1.png' | relative_url }})
 
 ### 单独看一个DIC值 没有其他的作比较 能判断这个模型拟合的好不好吗
 
@@ -29,7 +29,7 @@ PPC可以对比MSE
 
 - 注意，有时候DIC和PPC模型比较的结果会不一样，我记得胡传鹏老师之前遇到过类似问题
 
-![Untitled](DIC%20%E6%A8%A1%E5%9E%8B%E6%AF%94%E8%BE%83%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/Untitled%201.png)
+![Untitled]({{ '/assets/images/discussions/discussion-5/dic-comparison-2.png' | relative_url }})
 
 [Bayesian Modeling and Computation in Python](https://bayesiancomputationbook.com/markdown/chp_02.html#pareto-shape-parameter)
 

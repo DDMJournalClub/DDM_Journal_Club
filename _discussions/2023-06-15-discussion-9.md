@@ -17,7 +17,7 @@ Owner: Pan Wanke
 
 ## 最近更新
 
-![Untitled](HDDM%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/Untitled.png)
+![Untitled]({{ '/assets/images/discussions/discussion-9/hddm-install-update.png' | relative_url }})
 
 具体请参考 [HDDM安装以及问题汇总 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/389906139?)
 
@@ -57,7 +57,7 @@ print(hddm.**version**())
 
 ### container_value
 
-![Untitled](HDDM%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/Untitled.jpeg)
+![Untitled]({{ '/assets/images/discussions/discussion-9/pymc-container-value.png' | relative_url }})
 
 https://github.com/pymc-devs/pymc/issues/428
 
