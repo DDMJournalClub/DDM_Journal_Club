@@ -90,9 +90,10 @@ end
 7. GitHub Actions 自动部署（已修复）
 
 ### 待解决问题 ⏳
-1. 首页最新推送卡片无法点击跳转
-2. 链接使用日期+主题缩写（已完成配置，需验证）
-3. 优化前端设计（响应式、动画等）
+1. ~~首页最新推送卡片无法点击跳转~~
+2. ~~链接使用日期+主题缩写（已完成配置，需验证）~~
+3. ~~优化前端设计（响应式、动画等）~~
+4. **Discussions 页面图片显示问题** - 当前重点
 
 ---
 
@@ -108,13 +109,73 @@ end
 
 **已排除在构建外的辅助文件**（`_config.yml` exclude 列表）：
 - `AGENTS.md` - 开发规范
-- `files_plan.md`, `findings.md`, `MIGRATION_PLAN.md`, `PLAN_ISSUES.md`, `task_plan.md` - 规划文件
+- `task_plan.md`, `findings.md`, `progress.md` - 规划文件
+- `REVISION_PLAN.md`, `MIGRATION_PLAN.md` - 迁移计划
 - `log.md`, `prompt_log.md` - 日志记录
-- `progress.md` - 本文件（进度记录）
 
 ---
 
-**最后更新**: 2026-03-18
+**最后更新**: 2026-03-19
+
+---
+
+## 2026-03-19 - Discussions 图片路径问题分析与计划
+
+### 问题描述
+用户反馈 discussions/discussion-1/ 页面的图片无法正常显示，例如：
+```html
+<img src="bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/Untitled.png" alt="Untitled">
+```
+
+### 分析结果
+
+**根本原因：**
+1. **图片路径格式错误** - Markdown 使用 Notion 导出的相对路径，包含空格和中文字符
+2. **图片位置不当** - 图片存放在 `Private & Shared/` 目录，被 exclude 排除在构建外
+3. **路径解析错误** - Jekyll 构建后相对路径无法正确解析
+
+**问题文件：**
+- `_discussions/2023-06-15-discussion-1.md`
+- 图片引用：3 处
+  - `bayesian%20p%20与%20hypothesis%20testing/Untitled.png`
+  - `bayesian%20p%20与%20hypothesis%20testing/Untitled%201.png`
+  - `bayesian%20p%20与%20hypothesis%20testing/Untitled%202.png`
+
+**图片实际位置：**
+```
+Private & Shared/DDM Club/bayesian p 与 hypothesis testing/
+├── Untitled.png
+├── Untitled 1.png
+└── Untitled 2.png
+```
+
+### 解决方案
+**方案选择：迁移图片到 assets 目录 + 更新 Markdown 引用**
+
+**实施步骤：**
+1. 创建目录 `assets/images/discussions/discussion-1/`
+2. 从 `Private & Shared/` 复制图片到新目录
+3. 重命名图片（规范化文件名）
+4. 更新 Markdown 中的图片引用路径
+
+**路径变更：**
+```markdown
+# 修改前:
+![Untitled](bayesian%20p%20与%20hypothesis%20testing/Untitled.png)
+
+# 修改后:
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-1.png)
+```
+
+### 状态
+**⏳ 等待用户确认后实施修复**
+
+### 下一步行动
+用户确认后，将执行：
+1. 复制并重命名图片文件
+2. 更新 Markdown 引用
+3. 提交更改
+4. 验证线上效果
 
 ---
 
@@ -196,3 +257,78 @@ EntryFilter: excluded /_posts/2022-08-24-mnle.md
 2. **where_exp 不支持复合条件** - Jekyll 3.10.0 中 `or` 语法会报错
 3. **使用 for + if 模式** - 更灵活，兼容性更好
 4. **检查 EntryFilter 日志** - 快速定位文件排除问题
+
+---
+
+## 2026-03-19 下午 - Discussion-1 图片修复完成 ✅
+
+### 修复内容
+成功修复了 `_discussions/2023-06-15-discussion-1.md` 中的图片显示问题。
+
+### 修改的文件
+| 文件 | 修改内容 |
+|------|----------|
+| `_discussions/2023-06-15-discussion-1.md` | 更新 3 个图片引用路径 |
+| `assets/images/discussions/discussion-1/` | 新建目录，存放 3 张图片 |
+| `assets/documents/discussions/discussion-1/` | 新建目录，存放 1 个 PDF |
+
+### 文件变更详情
+
+**1. 创建目录结构**
+```
+assets/
+├── images/discussions/discussion-1/
+│   ├── bayesian-hypothesis-testing-1.png (64KB)
+│   ├── bayesian-hypothesis-testing-2.png (6KB)
+│   └── bayesian-hypothesis-testing-3.png (43KB)
+└── documents/discussions/discussion-1/
+    └── yuhongbo-peer-influence-moral-decision-making.pdf (5MB)
+```
+
+**2. 图片路径变更**
+```markdown
+# 修改前 (3 处):
+![Untitled](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/Untitled.png)
+![Untitled](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/Untitled%201.png)
+![Untitled](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/Untitled%202.png)
+
+# 修改后:
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-1.png)
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-2.png)
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-3.png)
+```
+
+**3. PDF 路径变更**
+```markdown
+# 修改前:
+[PDF 名称](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/2021cognition_yuhongbo_molly_...pdf)
+
+# 修改后:
+[PDF 名称](/assets/documents/discussions/discussion-1/yuhongbo-peer-influence-moral-decision-making.pdf)
+```
+
+### 验证清单
+- [x] 图片复制到正确位置
+- [x] 文件名规范化（去除空格和中文）
+- [x] Markdown 路径更新
+- [x] PDF 文件迁移并重命名
+- [x] 规划文件更新（task_plan.md, findings.md, progress.md）
+
+### 重要发现 ⚠️
+**系统性问题**：不止 discussion-1 存在图片问题！
+扫描发现 **12 个 discussions 文件** 有类似的图片引用问题，共 **19 处引用**。
+
+受影响文件：
+- discussion-2, discussion-5, discussion-9, discussion-12
+- discussion-13, discussion-14, discussion-15, discussion-18
+- discussion-20, discussion-21, discussion-23
+
+这些文件都使用类似的 URL 编码路径格式，需要逐一修复。
+
+### 下一步建议
+1. **立即验证**：提交当前更改，部署后验证 discussion-1 图片是否正常显示
+2. **批量修复**：如果用户需要，可以批量修复其他 11 个文件
+3. **自动化脚本**：考虑编写脚本自动处理 Notion 导出的路径转换
+
+### 状态
+**✅ Discussion-1 修复完成，等待验证**

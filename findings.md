@@ -1,126 +1,153 @@
-# Findings: Jekyll 日程显示问题
+# Findings: Discussions 图片路径问题
 
 ## 根本原因
 
-### 1. **exclude: "*.md" 递归排除了所有 posts** ⚠️ **这是主因！**
+### 1. **图片路径格式问题** ⚠️ **主因**
+```markdown
+![Untitled](bayesian%20p%20与%20hypothesis%20testing/Untitled.png)
+```
+
+**问题分析：**
+- 路径包含空格和中文字符
+- URL 编码后 (`bayesian%20p%20%E4%B8%8E%20hypothesis%20testing`) 复杂且容易出错
+- 这是 Notion 导出时的默认路径格式
+
+### 2. **图片文件位置不当**
+
+**图片实际位置：**
+```
+Private & Shared/
+└── DDM Club/
+    └── bayesian p 与 hypothesis testing/
+        ├── Untitled.png
+        ├── Untitled 1.png
+        └── Untitled 2.png
+```
+
+**Jekyll 配置问题：**
 ```yaml
+# _config.yml
 exclude:
-  - "*.md"  # 本意排除根目录辅助文件，但递归应用到所有子目录！
-```
-GitHub Actions 日志：
-```
-EntryFilter: excluded /_posts/2022-08-09-mental-speed.md
-EntryFilter: excluded /_posts/2022-08-24-mnle.md
-...
-```
-**所有 24 个 posts 都被 EntryFilter 排除了！**
-
-### 2. limit_posts 限制
-- `_config.yml` 中 `limit_posts: 10` 导致 Jekyll 只处理最近的 10 个 posts
-- 24 个 posts 文件中很多被忽略
-
-### 3. Liquid where_exp 逻辑问题
-- `post.status != 'done'` 对 `nil` 值返回 `false`（非 true）
-- 只有显式设置 `status: done` 的 posts 会被排除
-- 大部分 posts 没有 `status` frontmatter，导致 `nil` 比較問題
-
-### 4. Jekyll 3.10.0 where_exp 不支持复合条件
-**GitHub Actions 报错**：
-```
-Liquid syntax error (line 23): Expected end_of_string but found id
+  - Private & Shared/  # 图片被排除在构建外！
 ```
 
-- `where_exp` 不支持 `or` 连接的复合条件
-- 必须使用简单的 for + if 模式
+### 3. **路径引用方式**
+- 使用相对路径：`bayesian%20p%20与%20hypothesis%20testing/Untitled.png`
+- Jekyll 构建后，相对路径基于当前页面 URL 解析
+- 页面 URL: `https://ddmjournalclub.github.io/DDM_Journal_Club/discussions/discussion-1/`
+- 图片尝试加载: `https://ddmjournalclub.github.io/DDM_Journal_Club/discussions/discussion-1/bayesian%20p%20与%20hypothesis%20testing/Untitled.png`
+- **结果：404**，因为该路径不存在
 
 ## 解决方案对比
 
-| 方案 | 优点 | 缺点 |
-|------|------|------|
-| A. 修复 where_exp | 保持现有文件结构 | 语法不支持，失败 |
-| B. **for + if 模式** ✅ | 兼容所有 Jekyll 版本 | 代码稍长 |
-| C. 子文件夹分类 | 逻辑清晰 | 需要移动文件 |
+| 方案 | 优点 | 缺点 | 可行性 |
+|------|------|------|--------|
+| A. 修改 exclude，包含 Private & Shared | 改动最小 | 路径仍有问题，URL 不友好 | ❌ 不推荐 |
+| B. **迁移图片到 assets/** ✅ | 符合 Jekyll 规范，路径清晰 | 需要手动复制和重命名 | ✅ 推荐 |
+| C. 使用外部图床 | 不占用仓库空间 | 依赖外部服务，可能失效 | ❌ 不推荐 |
 
-**最终选择：方案 B**（for + if 模式）
+## 推荐方案详细设计
 
-## 正确写法
-
-### 错误的 where_exp
-```liquid
-{% assign upcoming = site.posts | where_exp: "post", "post.status == 'plan' or post.status == 'in-progress'" %}
+### 目标目录结构
+```
+assets/
+├── images/
+│   ├── speakers/          # 已有
+│   └── discussions/       # 新建
+│       └── discussion-1/
+│           ├── bayesian-hypothesis-testing-1.png
+│           ├── bayesian-hypothesis-testing-2.png
+│           └── bayesian-hypothesis-testing-3.png
+└── documents/
+    └── discussions/
+        └── discussion-1/
+            └── yuhongbo-peer-influence-moral-decision-making.pdf
 ```
 
-### 正确的 for + if
-```liquid
-{% for post in site.posts %}
-  {% if post.status == 'plan' or post.status == 'in-progress' %}
-    <!-- 显示 post -->
-  {% endif %}
-{% endfor %}
+### 文件名规范化规则
+1. **去除空格**：用 `-` 替换空格
+2. **去除中文**：使用英文描述
+3. **添加序号**：如果多个 Untitled，添加 `-1`, `-2` 等
+4. **保留扩展名**：`.png`, `.jpg` 等
+
+### Markdown 路径更新规则
+```markdown
+# 修改前（相对路径，带 URL 编码）:
+![Untitled](bayesian%20p%20与%20hypothesis%20testing/Untitled.png)
+
+# 修改后（绝对路径，简洁）:
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-1.png)
 ```
 
-## 修改的文件
+## 已完成的修复 ✅
 
-| 文件 | 修改内容 |
-|------|----------|
-| `_config.yml` | `limit_posts: 10` → `100` |
-| `schedule.html` | 改为 for + if 模式 |
-| `index.html` | 改为 for + if 模式 |
+### discussion-1 修复详情
+| 文件 | 图片数量 | 状态 |
+|------|----------|------|
+| `_discussions/2023-06-15-discussion-1.md` | 3 张 | ✅ 已修复 |
 
-## Status 元数据设计
-- `plan`: 计划中的项目（未来）
-- `in-progress`: 正在进行中的项目（当天）
-- `done`: 已完成的项目（历史）
-- `nil`: 默认值，等同于 done（向后兼容）
+**修改内容：**
+- ✅ 创建目录 `assets/images/discussions/discussion-1/`
+- ✅ 复制并重命名 3 张图片
+- ✅ 更新 Markdown 中的 3 个图片引用
+- ✅ 迁移 1 个 PDF 文件并重命名
+- ✅ 更新 PDF 引用路径
 
-## 错误教训
-1. 不应在没有 Jekyll 环境的本地测试更改
-2. 需要先理解 Liquid 的 nil 处理机制
-3. limit_posts 会对 posts 集合产生限制
-4. **Jekyll 3.10.0 的 where_exp 不支持复合条件**
-5. **Jekyll exclude 模式是递归的** - `"*.md"` 会排除所有子目录的 .md 文件
+## 重要发现 ⚠️
 
-## 解决方案总结
+### 系统性问题
+扫描发现 **12 个 discussions 文件** 有类似的图片引用问题，共 **19 处引用**。
 
-### 修复后的 _config.yml
-```yaml
-# Jekyll 配置
-timezone: Asia/Shanghai
-future: true
-show_drafts: false
-limit_posts: 100
+### 受影响文件列表
+| 文件 | 图片数量 | 状态 |
+|------|----------|------|
+| `discussion-1` | 3 张 | ✅ 已修复 |
+| `discussion-2` | 1 张 | ⏳ 待修复 |
+| `discussion-5` | 2 张 | ⏳ 待修复 |
+| `discussion-9` | 1 张 | ⏳ 待修复 |
+| `discussion-12` | 1 张 | ⏳ 待修复 |
+| `discussion-13` | 1 张 | ⏳ 待修复 |
+| `discussion-14` | 1 张 | ⏳ 待修复 |
+| `discussion-15` | 1 张 | ⏳ 待修复 |
+| `discussion-18` | 4 张 | ⏳ 待修复 |
+| `discussion-20` | 1 张 | ⏳ 待修复 |
+| `discussion-21` | 1 张 | ⏳ 待修复 |
+| `discussion-23` | 2 张 | ⏳ 待修复 |
+| **总计** | **19 张** | **1/12 已修复** |
 
-# 排除文件（注意：使用 / 开头表示根目录，避免递归排除）
-exclude:
-  - templates/
-  - Private & Shared/
-  - .gitignore
-  - node_modules/
-  - "/README.md"
-  - "/README_CH.md"
-  - "/README_zh.md"
-  - "/task_plan.md"
-  - "/findings.md"
-  - "/progress.md"
-
-# 默认配置
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      comments: true
-      status: done
+### 路径格式示例
+这些文件都使用类似的 URL 编码路径格式：
+```markdown
+![Untitled](HDDM%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/Untitled.png)
+![Untitled](%E6%8A%A5%E9%94%99%EF%BC%9AAttributeError%20'DataFrame'%20object%20has%20no%20attrib/Untitled.png)
+![Untitled](trial%E6%95%B0%E9%87%8F%E5%AF%B9DDM%E7%9A%84%E5%BD%B1%E5%93%8D/Untitled.png)
 ```
 
-### 修复后的 schedule.html 查询模式
-```liquid
-{% for post in site.posts limit: 100 %}
-  {% if post.status == 'plan' or post.status == 'in-progress' or post.status == nil %}
-    <!-- 显示 post -->
-  {% endif %}
-{% endfor %}
-```
+## 验证清单
 
-**状态**：✅ 已修复并验证通过
+### discussion-1 验证
+- [x] 图片复制到正确位置
+- [x] 文件名规范化
+- [x] Markdown 路径更新
+- [x] PDF 文件迁移
+- [ ] GitHub Actions 构建成功
+- [ ] 线上页面图片正常显示
+
+### 全局验证
+- [ ] 其他 11 个文件修复
+- [ ] 所有图片正常显示
+- [ ] 所有 PDF 可正常下载
+
+## 下一步建议
+
+### 立即行动
+1. **提交当前更改**：验证 discussion-1 图片显示是否正常
+2. **批量修复**：如果需要，可以批量修复其他 11 个文件
+
+### 长期优化
+1. **自动化脚本**：编写脚本自动处理 Notion 导出的路径转换
+2. **图片规范化**：建立统一的图片命名规范
+3. **文档迁移检查**：检查 `_papers/` 和 `_posts/` 是否有类似问题
+
+## 状态
+**✅ Discussion-1 修复完成，发现系统性问题待处理**

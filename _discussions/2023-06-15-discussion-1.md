@@ -19,9 +19,9 @@ Owner: Pan Wanke
 
 在plot_posterior_nodes 和比较posterior probability的时候，这个PP值是越趋近0 好还是越趋近1好？我plot了5个条件下的posterior of v （如图），然后相邻两个进行了比较（print("P(1>2)=", (v_1.trace()>v_2.trace()).mean())），值都是接近1的。图看起来分布重合度很低，怎么理解这个结果？
 
-![Untitled](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/Untitled.png)
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-1.png)
 
-![Untitled](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/Untitled%201.png)
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-2.png)
 
 - 回答
 
@@ -53,6 +53,6 @@ ROPE的思路主观性太强了，我感觉也不好达成统一意见
 
 于宏波老师的一篇文章中，对ddm参数使用了贝叶斯统计，而不是传统的频率统计，看起来有人认为MCMC估计的参数在统计时也应该用贝叶斯统计方法；如果有审稿人问起，确实参考于宏波老师的应对方法
 
-![Untitled](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/Untitled%202.png)
+![Untitled](/assets/images/discussions/discussion-1/bayesian-hypothesis-testing-3.png)
 
-[2021cognition_yuhongbo_molly_How peer influence shapes value computation in moral decision-mak.pdf](bayesian%20p%20%E4%B8%8E%20hypothesis%20testing/2021cognition_yuhongbo_molly_How_peer_influence_shapes_value_computation_in_moral_decision-mak.pdf)
+[2021cognition_yuhongbo_molly_How peer influence shapes value computation in moral decision-mak.pdf](/assets/documents/discussions/discussion-1/yuhongbo-peer-influence-moral-decision-making.pdf)
