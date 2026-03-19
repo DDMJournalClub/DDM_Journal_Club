@@ -108,7 +108,7 @@ links:
 #### DON'Ts
 ```liquid
 <!-- DON'T use complex where_exp conditions (Jekyll 3.10 limitation) -->
-{% assign posts = site.posts | where_exp: "post", "status == 'a' or status == 'b'" %}
+{% assign posts = site.posts | where_exp: "post", "post.status == 'a'" %}
 
 <!-- DON'T use recursive glob patterns in exclude -->
 exclude:
