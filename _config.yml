@@ -84,7 +84,6 @@ exclude:
 
 # 包含文件
 include:
-  - _pages
   - assets
 
 # 导航栏
