@@ -27,6 +27,15 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
+# Collections 配置
+collections:
+  papers:
+    output: true
+    permalink: /papers/:slug/
+  discussions:
+    output: true
+    permalink: /discussions/:slug/
+
 # 默认配置
 defaults:
   - scope:
@@ -36,10 +45,20 @@ defaults:
       layout: post
       comments: true
       status: done
+  - scope:
+      path: ""
+      type: papers
+    values:
+      layout: post
+      category: paper
+  - scope:
+      path: ""
+      type: discussions
+    values:
+      layout: post
+      category: discussion
 
 # GitHub Pages 需要的安全配置
-# 参考: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-jekyll-build-files-using-github-actions
-# 暂时注释，等部署时再确认
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -52,12 +71,16 @@ exclude:
   - Private & Shared/
   - .gitignore
   - node_modules/
+  - vendor/
   - "/README.md"
   - "/README_CH.md"
   - "/README_zh.md"
   - "/task_plan.md"
   - "/findings.md"
   - "/progress.md"
+  - "/REVISION_PLAN.md"
+  - "*.sh"
+  - "*.py"
 
 # 包含文件
 include:

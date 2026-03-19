@@ -8,84 +8,69 @@ permalink: /resources/
 <section class="section">
   <h1 class="section-title">资料</h1>
   <p style="color: var(--color-text-light); margin-top: var(--space-md);">
-    热门讨论、教程、工具等资源汇总。
+    热门讨论、教程、工具等资源汇总。共收录 {{ site.discussions | size }} 篇讨论。
   </p>
 </section>
 
-<!-- 资料分类 -->
+<!-- 热门讨论列表 -->
 <section class="section">
-  <div class="grid grid-3">
-    <!-- 热门讨论 -->
-    <div class="card" style="cursor: pointer;">
+  <div class="section-header">
+    <h2 class="section-title">热门讨论</h2>
+    <p class="section-subtitle">DDM 常见问题解答与技术讨论</p>
+  </div>
+  
+  <div class="grid grid-2">
+    {% for discussion in site.discussions limit: 10 %}
+    <div class="card">
       <div class="card-header">
-        <span class="status status-open">热门</span>
+        <span class="status status-open">讨论</span>
       </div>
-      <h3 class="card-title">热门讨论</h3>
-      <p class="card-meta">20+ 讨论话题</p>
+      <h3 class="card-title">{{ discussion.title }}</h3>
+      <p class="card-meta">作者: {{ discussion.author | default: 'DDMJC Community' }}</p>
       <div class="card-content">
-        <ul style="list-style: none; margin-top: var(--space-md);">
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="#">Trial 数量对 DDM 的影响</a>
-          </li>
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="#">HDDM 安装问题</a>
-          </li>
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="#">DDM 与 confidence 的讨论</a>
-          </li>
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="#">模型的参数差异性检验问题</a>
-          </li>
-        </ul>
+        <p>{{ discussion.content | strip_html | truncatewords: 25 }}</p>
       </div>
-      <a href="#" class="btn btn-secondary" style="margin-top: var(--space-md); width: 100%;">查看全部 →</a>
+      <div class="card-tags">
+        {% for tag in discussion.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <a href="{{ discussion.url | relative_url }}" class="btn btn-primary" style="margin-top: var(--space-md);">查看详情 →</a>
     </div>
-    
-    <!-- 教程 -->
-    <div class="card" style="cursor: pointer;">
-      <div class="card-header">
-        <span class="status status-recording">教程</span>
+    {% endfor %}
+  </div>
+  
+  {% if site.discussions.size > 10 %}
+  <div style="text-align: center; margin-top: var(--space-xl);">
+    <a href="#all-discussions" class="btn btn-secondary">查看全部 {{ site.discussions.size }} 篇讨论</a>
+  </div>
+  {% endif %}
+</section>
+
+<!-- 全部讨论 -->
+<section class="section" id="all-discussions">
+  <div class="section-header">
+    <h2 class="section-title">全部讨论</h2>
+  </div>
+  
+  <div style="background: var(--color-bg); border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+    {% for discussion in site.discussions %}
+    <div style="padding: var(--space-md) var(--space-lg); border-bottom: 1px solid var(--color-border); {% if forloop.last %}border-bottom: none;{% endif %}">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-md);">
+        <div style="flex: 1;">
+          <a href="{{ discussion.url | relative_url }}" style="font-weight: 600; color: var(--color-text); text-decoration: none; hover: { color: var(--color-primary); }">
+            {{ discussion.title }}
+          </a>
+          <p style="font-size: 0.85rem; color: var(--color-text-light); margin-top: var(--space-xs);">
+            {{ discussion.content | strip_html | truncatewords: 15 }}
+          </p>
+        </div>
+        <span style="font-size: 0.75rem; color: var(--color-text-muted); white-space: nowrap;">
+          {{ discussion.date | date: '%Y-%m-%d' }}
+        </span>
       </div>
-      <h3 class="card-title">教程</h3>
-      <p class="card-meta">5+ 教程</p>
-      <div class="card-content">
-        <ul style="list-style: none; margin-top: var(--space-md);">
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="#">Docker 安装 HDDM 教程</a>
-          </li>
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="#">HDDM 入门指南</a>
-          </li>
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="#">模型收敛不好怎么办</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="btn btn-secondary" style="margin-top: var(--space-md); width: 100%;">查看全部 →</a>
     </div>
-    
-    <!-- 工具 -->
-    <div class="card" style="cursor: pointer;">
-      <div class="card-header">
-        <span class="status status-resolved">工具</span>
-      </div>
-      <h3 class="card-title">工具</h3>
-      <p class="card-meta">DDM 相关工具</p>
-      <div class="card-content">
-        <ul style="list-style: none; margin-top: var(--space-md);">
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="https://github.com/hddm-devs/hddm" target="_blank" rel="noopener">HDDM</a> - Python 贝叶斯 DDM
-          </li>
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="https://github.com/uaolly/fast-ddm" target="_blank" rel="noopener">Fast-DDM</a> - 快速 DDM 估计
-          </li>
-          <li style="margin-bottom: var(--space-sm);">
-            <a href="https://github.com/mwaskom/DBDA2E-utilities" target="_blank" rel="noopener">DBDA2E</a> - Bayesian DDM
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="btn btn-secondary" style="margin-top: var(--space-md); width: 100%;">查看全部 →</a>
-    </div>
+    {% endfor %}
   </div>
 </section>
 
