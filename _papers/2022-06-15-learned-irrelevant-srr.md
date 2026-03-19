@@ -20,8 +20,6 @@ rating: "⭐⭐"
 **期刊**: Journal of Experimental Psychology: Learning, Memory, and Cognition  
 **第一作者**: 罗娇容（华南师范大学）
 
----
-
 ## 研究简介
 
 2022年8月25日，华南师范大学心理学院王凌课题组在认知心理学权威期刊Journal of Experimental Psychology: Learning, Memory, and Cognition上发表题为**"Learned Irrelevant Stimulus-Response Associations and Proportion Congruency Effect: A Diffusion Model Account"**的研究论文。该研究结合扩散模型的一个变式（diffusion model for conflict tasks，DMC）来定性及定量地比较了比例一致性（proportion congruency，PC）效应的两种主要理论机制，即注意调节和无关刺激反应联结学习。模型的模拟和数据拟合结果一致表明，只有后者能够同时解释Simon效应在不同PC条件下的平均反应时及反应时分布模式，说明了**无关刺激反应联结学习是PC效应的一般机制。**该研究为PC效应的理论之争提供了新见解，并有助于认知控制理论模型的发展。
