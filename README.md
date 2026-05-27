@@ -64,6 +64,7 @@ The event has received strong support from:
 | Xiaoyu Zeng | Beijing Normal University (PhD) | Organizer |
 | Mingqian Guo | Radboud University (PhD) | Organizer |
 | Yikang Liu | Nanjing Normal University (MS) | Organizer |
+| Bo Shen | Institute of Psychology, CAS (PhD) | Organizer |
 | Haiyang Geng | Tianqiao Brain Institute (PhD) | Advisor |
 | Xiao Hu | Beijing Normal University (PhD) | Advisor |
 | Chuanpeng Hu | Nanjing Normal University (PhD) | Advisor |

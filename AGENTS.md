@@ -282,12 +282,20 @@ team:
    - 明确标注为"指导老师"的导师 → `"指导老师"`
 2. **格式化 institution**：从用户描述中提取当前机构和最高学位，如 `"中科院心理所"` → `"中国科学院心理研究所 (博士)"`
 3. **插入位置**：新 `"组织者"` 插入在现有组织者列表末尾、指导老师之前；新 `"指导老师"` 插入在指导老师列表末尾
-4. **修改文件**：更新 `_config.yml` 中 `team` 数组
+4. **修改文件**（共 3 个文件，必须全部同步）：
+
+   | 文件 | 内容 | 说明 |
+   |------|------|------|
+   | `_config.yml` | `team` 数组 | 网站数据源 |
+   | `README.md` | Organizing Committee 表格 | 英文 README，使用英文名和英文机构名 |
+   | `README_CH.md` | 组委会成员 表格 | 中文 README，使用中文名和中文机构名 |
+
+5. **注意**：`README_zh.md` 是旧版 README，不含组委会名单，无需更新
 
 ### Updating an Existing Member
 
 当成员的机构或角色发生变化时：
-- 直接修改 `_config.yml` 中对应成员的 `institution` 或 `role` 字段
+- 同步更新 `_config.yml`、`README.md`、`README_CH.md` 三个文件中对应成员的信息
 - 例如：博士研究生毕业入职 → 更新 institution，role 可能从 `"组织者"` 改为 `"指导老师"`
 
 ### Display
