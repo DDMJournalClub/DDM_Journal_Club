@@ -253,6 +253,63 @@ When updating multiple historical posts to `done`:
 | 已有 plan post，收到了 speaker info | 更新现有 post 的 TBD 字段，状态改为 `in-progress` |
 | 报告已结束 | 更新现有 post，补充录屏链接，状态改为 `done` |
 
+## Committee Member Management
+
+组委会成员数据存储在 `_config.yml` 的 `team` 数组中，渲染在 `index.html` 首页。
+
+### Data Structure
+
+```yaml
+team:
+  - name: "成员姓名"
+    institution: "机构名称 (学位/身份)"
+    role: "组织者"  # 组织者 / 指导老师
+```
+
+| 字段 | 说明 |
+|------|------|
+| `name` | 成员中文姓名 |
+| `institution` | 当前所属机构及身份，格式为 `"机构名 (学位)"`，如 `"南京师范大学 (博士研究生)"`、`"中国科学院心理研究所 (博士)"` |
+| `role` | `"组织者"`（日常运营成员）或 `"指导老师"`（导师/顾问） |
+
+### Adding a New Member
+
+当用户提供新成员信息时：
+
+1. **确定 role**：
+   - 在读研究生（硕士/博士）→ `"组织者"`
+   - 已获博士学位、在职研究人员 → 询问用户意向，默认为 `"组织者"`
+   - 明确标注为"指导老师"的导师 → `"指导老师"`
+2. **格式化 institution**：从用户描述中提取当前机构和最高学位，如 `"中科院心理所"` → `"中国科学院心理研究所 (博士)"`
+3. **插入位置**：新 `"组织者"` 插入在现有组织者列表末尾、指导老师之前；新 `"指导老师"` 插入在指导老师列表末尾
+4. **修改文件**：更新 `_config.yml` 中 `team` 数组
+
+### Updating an Existing Member
+
+当成员的机构或角色发生变化时：
+- 直接修改 `_config.yml` 中对应成员的 `institution` 或 `role` 字段
+- 例如：博士研究生毕业入职 → 更新 institution，role 可能从 `"组织者"` 改为 `"指导老师"`
+
+### Display
+
+成员通过 `index.html` 中的 Liquid 模板渲染：
+
+```liquid
+{% for member in site.team %}
+<div class="team-card">
+  <div class="team-avatar">{{ member.name | slice: 0, 1 }}</div>
+  <div class="team-info">
+    <h4>{{ member.name }}</h4>
+    <p>{{ member.institution }}</p>
+    <span class="team-role">{{ member.role }}</span>
+  </div>
+</div>
+{% endfor %}
+```
+
+- 头像自动取姓名首字，无需上传图片
+- CSS 样式在 `assets/css/style.css` 中 `.team-*` 相关规则
+
 ## Testing
 
 ### Pre-deployment Checklist
