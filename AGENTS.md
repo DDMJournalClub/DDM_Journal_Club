@@ -79,6 +79,32 @@ links:
 ---
 ```
 
+### Post Content Conventions
+
+#### Default Values
+
+When creating or updating posts, use these defaults unless the user specifies otherwise:
+
+| Field | Default Value | Notes |
+|-------|---------------|-------|
+| `zoom_id` | `"863 0404 9478"` | 默认 Zoom 会议号 |
+| `time` | `"20:00-21:00"` | 默认报告时间 |
+
+#### Title Convention
+
+- **Frontmatter `title`**: 保持原文标题（英文论文保持英文，中文论文保持中文），不做翻译
+- **正文第一行 `# 标题`**: 翻译为中文，便于中文读者理解报告主题
+
+Example:
+```yaml
+---
+title: "Simulation-Based Evidence Accumulation Modeling: The eam Package"
+---
+```
+```markdown
+# 面向单响应与多响应任务的基于模拟的证据积累建模：eam 包
+```
+
 ### Naming Conventions
 
 - **Post filenames**: `YYYY-MM-DD-topic-slug.md` (lowercase, hyphenated)

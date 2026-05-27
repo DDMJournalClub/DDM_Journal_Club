@@ -3,11 +3,11 @@ title: "Simulation-Based Evidence Accumulation Modeling: The eam Package"
 short_title: "eam Package"
 speaker: "朱广予，杨光"
 institution: "澳大利亚国立大学，悉尼大学"
-host: "TBD"
+host: "Wanke Pan(潘晚坷)"
 date: "2026-06-05"
 time: "20:00-21:00"
 timezone: "北京时间 [GMT+8]"
-zoom_id: "TBD"
+zoom_id: "863 0404 9478"
 language: "中文"
 tags:
   - "evidence accumulation"
@@ -22,9 +22,9 @@ links:
   paper: "https://osf.io/preprints/psyarxiv/dg7c2_v1"
 ---
 
-# Simulation-Based Evidence Accumulation Modeling for Single- and Multi-Response Tasks: The eam Package
+# 面向单响应与多响应任务的基于模拟的证据积累建模：eam 包
 
-主持人: TBD
+主持人: Wanke Pan(潘晚坷)
 
 ---
 
@@ -50,11 +50,11 @@ Evidence accumulation models are widely used to model choices and reaction times
 
 北京时间 [GMT+8] 2026年06月05日 20:00~21:00
 
-**会议信息：** ZOOM 会议号：TBD
+**会议信息：** ZOOM 会议号：863 0404 9478
 
 **报告语言：** 中文
 
-**主持人：** TBD
+**主持人：** Wanke Pan(潘晚坷)
 
 ---
 
