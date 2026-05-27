@@ -14,6 +14,7 @@ tags:
   - "干扰控制"
   - "DMC"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2024-03-29_YL.png"
 links:
   paper: "https://doi.org/10.1037/xhp0001180"

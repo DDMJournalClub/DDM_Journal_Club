@@ -14,6 +14,7 @@ tags:
   - "年龄"
   - "认知能力"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2022-08-09_HX.png"
 links:
   paper: ""

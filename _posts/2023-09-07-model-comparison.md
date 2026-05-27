@@ -13,6 +13,7 @@ tags:
   - "讨论会"
   - "模型比较"
 recording: true
+status: done
 links:
   paper: "https://doi.org/10.12074/202308.00658V1"
 ---

@@ -14,6 +14,7 @@ tags:
   - "先验信息"
   - "EEG"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2022-10-08_WP.png"
 links:
   paper: "https://doi.org/10.1038/s41562-020-00967-9"

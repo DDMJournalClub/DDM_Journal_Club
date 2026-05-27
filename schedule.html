@@ -30,7 +30,7 @@ permalink: /schedule/
       <tbody>
         {% assign has_upcoming = false %}
         {% for post in site.posts limit: 100 %}
-          {% if post.status == 'plan' or post.status == 'in-progress' or post.status == nil %}
+          {% if post.status == 'plan' or post.status == 'in-progress' %}
             {% assign has_upcoming = true %}
             <tr>
               <td>{{ post.date | date: "%Y-%m-%d" }}</td>

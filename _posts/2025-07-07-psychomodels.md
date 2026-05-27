@@ -14,6 +14,7 @@ tags:
   - "computational models"
   - "database"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2025-07-07_NVD.png"
 links:
   paper: "https://doi.org/10.31234/osf.io/ptzdg_v1"

@@ -14,6 +14,7 @@ tags:
   - "社会认知"
   - "从众"
 recording: false
+status: done
 speaker_image: "/assets/images/speakers/2022-09-06_XZ.png"
 links:
   paper: "https://doi.org/10.1126/sciadv.abe4380"

@@ -14,7 +14,7 @@ tags:
   - "confidence"
   - "response time"
 recording: true
-status: in-progress
+status: done
 speaker_image: "/assets/images/speakers/2026-03-18_HC.png"
 links:
   paper: "https://osf.io/preprints/psyarxiv/jsqx5_v1/"

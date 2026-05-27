@@ -14,6 +14,7 @@ tags:
   - "neural-network"
   - "decision-making"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2025-04-08_LW.png"
 links:
   paper: "https://doi.org/10.1101/2025.03.06.641797"

@@ -14,6 +14,7 @@ tags:
   - "教程"
   - "认知建模"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2022-10-30_XW.png"
 links:
   paper: "https://doi.org/10.1162/neco.2007.20.4.873"

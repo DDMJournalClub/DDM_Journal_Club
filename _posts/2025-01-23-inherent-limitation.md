@@ -13,6 +13,7 @@ tags:
   - "perceptual decision making"
   - "task switch"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2025-01-23_XZ.png"
 links: {}
 ---

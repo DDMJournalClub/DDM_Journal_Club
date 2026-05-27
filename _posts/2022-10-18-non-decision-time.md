@@ -14,6 +14,7 @@ tags:
   - "non-decision time"
   - "算法"
 recording: true
+status: done
 speaker_image: "/assets/images/speakers/2022-10-18_GW.png"
 links:
   paper: "https://doi.org/10.31234/osf.io/gewb3"
