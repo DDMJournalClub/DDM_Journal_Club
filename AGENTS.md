@@ -158,6 +158,75 @@ When migrating from Notion (`Private & Shared/DDM Club/`):
 - [ ] Update status: `plan` / `in-progress` / `done`
 - [ ] Test build locally if possible
 
+## Post Lifecycle & Management
+
+### Status Workflow
+
+Posts follow a three-stage lifecycle:
+
+```
+plan → in-progress → done
+```
+
+| Status | Meaning | When to Use |
+|--------|---------|-------------|
+| `plan` | 计划中 | 新报告刚确定日期，但 speaker/host/Zoom 等详情尚未确认。可全部填 TBD |
+| `in-progress` | 进行中 | 详情已确认（speaker/host/Zoom），等待报告日期到来 |
+| `done` | 已完成 | 报告已结束。更新录屏链接、bilibili 链接，`recording: true` |
+
+### Creating a New Post
+
+**From speaker info document（推荐）**：
+当报告人提交了 `*_Speaker_Informance.md` 格式的信息文件时，从中提取以下字段：
+
+| 信息来源 | 对应 Frontmatter | 对应正文区域 |
+|----------|-----------------|-------------|
+| Speaker's name & affiliation | `speaker`, `institution` | 分享嘉宾（bio 作为简介） |
+| Title | `title`, `short_title` | 报告标题 |
+| Abstract | — | 报告简介 |
+| Date/time & length | `date`, `time` | 报告时间 |
+| Language | `language` | 报告语言 |
+| Reference (APA) | `links.paper` | 参考文献 |
+| Record/Open/Share slides | `recording` | 其他（录屏/幻灯片） |
+| Profile photo | `speaker_image` | 复制到 `/assets/images/speakers/` |
+
+**从空模板创建**：
+当仅有日期和主题，尚无详情时，使用 `templates/schedule-entry-template.md` 创建，关键字段填 TBD，`status: plan`。
+
+### Accepted Input Materials
+
+AI agent can accept the following types of materials to create or update posts:
+
+1. **`*_Speaker_Informance.md`** — 结构化报告人信息文件，包含所有必要字段
+2. **图片文件** (`.png`, `.jpeg`) — 报告人照片，复制到 `/assets/images/speakers/YYYY-MM-DD_initials.png`
+3. **口头/文字描述** — 用户直接提供日期、主题、speaker 等关键信息
+4. **PDF/论文链接** — 补充 `links.paper` 和参考文献
+
+### Updating an Existing Post
+
+When new information arrives for an existing `plan` or `in-progress` post:
+
+1. **补充 TBD 字段**：更新 speaker/host/Zoom ID/time 等
+2. **升级状态**：`plan` → `in-progress`（详情确认后），`in-progress` → `done`（报告结束后）
+3. **添加链接**：报告结束后补充 `links.bilibili` / `links.slides`
+4. **更新 recording**：报告结束后设为 `true`
+5. **更新 speaker_image**：收到照片后复制到 assets 并更新路径
+
+### Batch Status Update Pattern
+
+When updating multiple historical posts to `done`:
+- Insert `status: done` on the line immediately after `recording:` in each post's frontmatter
+- Avoid adding `status: done` to posts that are genuinely still `plan` or `in-progress`
+
+### Quick Reference: Create vs Update
+
+| 场景 | 操作 |
+|------|------|
+| 新报告，有完整 speaker info 文件 | `write_to_file` 创建新 post，`status: in-progress` |
+| 新报告，只知道日期/主题 | `write_to_file` 创建新 post，`status: plan`，其余填 TBD |
+| 已有 plan post，收到了 speaker info | 更新现有 post 的 TBD 字段，状态改为 `in-progress` |
+| 报告已结束 | 更新现有 post，补充录屏链接，状态改为 `done` |
+
 ## Testing
 
 ### Pre-deployment Checklist
