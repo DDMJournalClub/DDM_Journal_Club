@@ -12,7 +12,7 @@
 
 <p align="center">
 
-🌐 **[Visit Website](https://ddmjournalclub.github.io/DDM_Journal_Club/)** · 
+🌐 **[Visit Website](https://ddmjournalclub.github.io/.github/)** · 
 📝 **[Read Chinese Version](README_CH.md)** · 
 📅 **[Schedule](schedule.html)** · 
 📄 **[Key Papers](papers.html)**
