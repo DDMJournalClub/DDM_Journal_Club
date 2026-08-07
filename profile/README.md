@@ -74,7 +74,9 @@ The event has received strong support from:
 
 ## 📚 Key Publications
 
-- Pan, W., Geng, H., et al. (2022). A Hitchhiker's Guide to Bayesian Hierarchical Drift-Diffusion Modeling with dockerHDDM. *OSF Preprint*. https://doi.org/10.31234/osf.io/6uzga
+- 王琪惠, 任子伟, 胡传鹏, 王益文. (2026). 漂移扩散模型的理论基础及其合理使用的路径. 应用心理学. [url](https://doi.org/10.12074/202601.00206)
+- 邬思宇, 潘晚坷, 胡传鹏. (2026, April 25). 使用dockerHDDM对决策偏差进行建模. [url](https://doi.org/10.12074/202604.00323)
+- Pan, W., Geng, H., Zhang, L., Fengler, A., Frank, M. J., Zhang, R.-Y., & Chuan-Peng, H. (2025). dockerHDDM: A User-Friendly Environment for Bayesian Hierarchical Drift-Diffusion Modeling. *Advances in Methods and Practices in Psychological Science, 8*(1), 25152459241298700. https://doi.org/10.1177/25152459241298700
 - Geng, H., et al. (2022). Promoting computational psychiatry in China. *Nature Human Behaviour*, 6(5), 615–617. https://doi.org/10.1038/s41562-022-01328-4
 - Jin, H., et al. (2023). The Chinese Open Science Network (COSN): Building an open science community from scratch. *Advances in Methods and Practices in Psychological Science*, 6(1). https://doi.org/10.1177/25152459221144986
 
